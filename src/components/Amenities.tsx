@@ -159,11 +159,14 @@ const Amenities: React.FC = () => {
           >
             {/* Image fills container absolutely */}
             <div className="relative w-full h-full min-h-[100px]">
-              <img
+              <Image
                 src={amenity.image}
                 alt={amenity.title}
+                fill
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 style={{ borderRadius: 0 }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                priority={i < 2}
               />
               {/* Black gradient mask from bottom */}
               <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />

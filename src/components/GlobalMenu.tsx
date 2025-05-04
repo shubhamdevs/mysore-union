@@ -106,7 +106,7 @@ const GlobalMenu: React.FC = () => {
                   <div className="flex gap-4 mb-2">
                     {socials.map((s) => (
                       <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-[#232323] hover:bg-[#232323] hover:text-white transition-colors">
-                        <img src={s.icon} alt={s.name} className="w-5 h-5" />
+                        <Image src={s.icon} alt={s.name} width={32} height={32} className="w-5 h-5" />
                       </a>
                     ))}
                   </div>

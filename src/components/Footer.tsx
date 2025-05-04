@@ -26,7 +26,7 @@ const Footer: React.FC = () => (
       viewport={{ once: true }}
       className="flex items-center gap-4"
     >
-      <Image src="/logo.png" alt="Mysore Union Logo" width={40} height={40} className="rounded-full" />
+      <Image src="/logo.png" alt="Mysore Union Logo" width={64} height={64} className="w-16 h-16 rounded-full" />
       <span className="text-white text-lg font-light">Mysore Union</span>
     </motion.div>
 
@@ -51,7 +51,7 @@ const Footer: React.FC = () => (
           transition={{ duration: 0.3, delay: 0.4 + i * 0.1 }}
           viewport={{ once: true }}
         >
-          <img src={s.icon} alt={s.name} className="w-5 h-5" />
+          <Image src={s.icon} alt={s.name} width={20} height={20} className="w-5 h-5" />
         </motion.a>
       ))}
     </motion.div>

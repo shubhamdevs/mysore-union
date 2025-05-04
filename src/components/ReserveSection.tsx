@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const tabs = ["Dining", "Amenities"];
 
@@ -135,7 +136,13 @@ const ReserveSection: React.FC = () => {
                 border: '1.5px solid #333',
               }}
             >
-              <img src={exp.img} alt={exp.title} className="w-full h-full object-cover rounded-t-2xl" />
+              <Image
+                src={exp.img}
+                alt={exp.title}
+                width={400}
+                height={192}
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </motion.div>
           ))}
         </div>

@@ -2,15 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import Image from "next/image";
 
 const Hero = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
   return (
     <div className="min-h-screen bg-[#181818] relative">
       {/* Top Bar */}
