@@ -54,7 +54,7 @@ const ReserveSection: React.FC = () => {
               key={tab}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-8 py-3 rounded-full text-xl font-light transition-colors tracking-wide ${activeTab === tab ? 'bg-white text-black' : 'bg-[#232323] text-white hover:bg-[#333]'}`}
+              className={`luxury-button px-8 py-3 text-xl font-light transition-colors tracking-wide ${activeTab === tab ? 'bg-white text-black' : 'bg-[#232323] text-white hover:bg-[#333]'}`}
               onClick={() => setActiveTab(tab)}
             >
               {tab}
@@ -69,15 +69,15 @@ const ReserveSection: React.FC = () => {
             className="flex flex-col gap-8 items-stretch"
           >
             <div className="flex gap-6 w-full">
-              <input type="date" className="flex-1 rounded-xl px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
-              <input type="time" className="flex-1 rounded-xl px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
+              <input type="date" className="flex-1 px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
+              <input type="time" className="flex-1 px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
             </div>
-            <input type="number" min="1" max="20" placeholder="Number of Guests" className="w-full rounded-xl px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
+            <input type="number" min="1" max="20" placeholder="Number of Guests" className="w-full px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit" 
-              className="w-full bg-white text-black font-light py-4 rounded-xl shadow-lg hover:bg-gray-100 transition-colors text-xl"
+              className="luxury-button w-full bg-white text-black font-light py-4 shadow-lg hover:bg-gray-100 transition-colors text-xl"
             >
               Reserve Dining
             </motion.button>
@@ -89,19 +89,19 @@ const ReserveSection: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="flex flex-col gap-8 items-stretch"
           >
-            <select className="w-full rounded-xl px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light">
+            <select className="w-full px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light">
               <option value="">Select Amenity</option>
               {amenities.map(a => <option key={a} value={a}>{a}</option>)}
             </select>
             <div className="flex gap-6 w-full">
-              <input type="date" className="flex-1 rounded-xl px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
-              <input type="time" className="flex-1 rounded-xl px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
+              <input type="date" className="flex-1 px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
+              <input type="time" className="flex-1 px-6 py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-lg font-light" />
             </div>
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit" 
-              className="w-full bg-white text-black font-light py-4 rounded-xl shadow-lg hover:bg-gray-100 transition-colors text-xl"
+              className="luxury-button w-full bg-white text-black font-light py-4 shadow-lg hover:bg-gray-100 transition-colors text-xl"
             >
               Reserve Amenity
             </motion.button>

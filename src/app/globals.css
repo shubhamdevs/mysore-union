@@ -14,6 +14,16 @@
   --color-black: #111111;
   --color-gray-dark: #222222;
   --color-gray-light: #F5F5F5;
+  --font-heading: 'Host Grotesk', Arial, sans-serif;
+  --font-body: 'Montserrat', Arial, sans-serif;
+  --font-size-xs: 0.85rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.375rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3.5rem;
+  --radius-button: 8px;
+  --radius-input: 10px;
 }
 
 /* Dynamic gradient animation */
@@ -104,12 +114,23 @@ body::after {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-gold);
+}
+
+body, p, span, li, input, select, textarea, button {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 300;
+  letter-spacing: 0.01em;
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 /* Custom scrollbar */
@@ -203,9 +224,72 @@ html {
   @apply text-[var(--color-gold)];
 }
 
-.premium-button {
-  @apply bg-[var(--color-gold)] text-black px-8 py-3 rounded-full text-lg font-semibold 
-         transition-all duration-300 hover:bg-[var(--color-gold-light)] hover:shadow-lg;
+.outline-button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  font-family: var(--font-heading) !important;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  box-shadow: none;
+}
+.outline-button:hover, .outline-button:focus {
+  background: #fff;
+  color: #111;
+  border: 2px solid #fff;
+}
+
+.luxury-button, .premium-button, .btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 9999px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  box-shadow: none;
+}
+.luxury-button:hover, .premium-button:hover, .btn:hover {
+  background: #fff;
+  color: #111;
+  border: 2px solid #fff;
+}
+
+.faq-question {
+  font-size: 1.1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.faq-answer {
+  font-size: 0.98rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.faq-list {
+  gap: 0.5rem !important;
+}
+
+input, select, textarea {
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  background: var(--color-gray-dark);
+  color: var(--color-gold);
+  border: 1.5px solid #333;
+  padding: 1rem 1.5rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px var(--color-gold-light);
 }
 
 /* Host Grotesk font-face setup */
@@ -230,4 +314,62 @@ html {
 
 .font-host-grotesk {
   font-family: 'Host Grotesk', Arial, sans-serif !important;
+}
+
+/* Responsive Typography & Spacing */
+@media (max-width: 900px) {
+  html { font-size: 15px; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.7rem; }
+  h3 { font-size: 1.3rem; }
+}
+@media (max-width: 600px) {
+  html { font-size: 14px; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.2rem; }
+  h3 { font-size: 1rem; }
+  .container { padding: 0 0.5rem; }
+}
+
+/* Luxury color palette for backgrounds and accents */
+.bg-luxury {
+  background: linear-gradient(135deg, #181818 0%, #232323 100%);
+}
+.text-gold {
+  color: var(--color-gold);
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  word-break: break-word;
+}
+* {
+  box-sizing: border-box;
+}
+
+.container, .section-bg, main, section {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .container, .section-bg, main, section {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .container, .section-bg, main, section {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
 } 

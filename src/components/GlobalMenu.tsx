@@ -57,7 +57,7 @@ const GlobalMenu: React.FC = () => {
         className={`fixed left-1/2 -translate-x-1/2 bottom-8 z-[100] transition-opacity ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
       >
         <button
-          className="bg-[#181818] text-white rounded-full px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium border border-[#232323] hover:bg-[#232323] transition-colors min-w-[90px] min-h-[48px]"
+          className="luxury-button px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px]"
           style={{ fontFamily: 'Host Grotesk, sans-serif' }}
           onClick={() => setOpen(true)}
           aria-label="Open menu"
@@ -128,7 +128,7 @@ const GlobalMenu: React.FC = () => {
             </div>
             {/* Close button (center bottom) */}
             <button
-              className="fixed left-1/2 -translate-x-1/2 bottom-8 z-[300] bg-[#181818] text-white rounded-full px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium border border-[#232323] hover:bg-[#232323] transition-colors min-w-[90px] min-h-[48px]"
+              className="luxury-button fixed left-1/2 -translate-x-1/2 bottom-8 z-[300] px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px]"
               style={{ fontFamily: 'Host Grotesk, sans-serif' }}
               onClick={() => setOpen(false)}
               aria-label="Close menu"

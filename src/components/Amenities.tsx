@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const amenities = [
   {
@@ -103,6 +104,14 @@ const CircularTextLogo = ({ className = '', style = {}, zIndex = 10, reverse = f
 const Amenities: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!sectionRef.current) return;
@@ -137,49 +146,72 @@ const Amenities: React.FC = () => {
       <CircularTextLogo className="-top-16 -left-16 opacity-40" zIndex={0} style={{ filter: 'blur(1px)' }} reverse={false} />
 
       {/* Section Title */}
-      <div className="flex items-center gap-6 mb-16 ml-2 relative z-10">
-        <span className="text-[clamp(2.5rem,6vw,5rem)] font-bold" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>CRAFTING</span>
-        <span className="text-[clamp(2.5rem,6vw,5rem)] font-bold text-white" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>EXPERIENCES</span>
+      <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center gap-2 sm:gap-6 mb-10 sm:mb-16 mx-auto w-full relative z-10 text-center">
+        <span className="text-2xl sm:text-[clamp(2.5rem,6vw,5rem)] font-bold block" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>CRAFTING</span>
+        <span className="text-2xl sm:text-[clamp(2.5rem,6vw,5rem)] font-bold text-white block" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>EXPERIENCES</span>
       </div>
 
-      {/* Custom grid layout */}
-      <motion.div
-        className="relative max-w-6xl mx-auto min-h-[1200px] grid grid-cols-6 grid-rows-6 gap-8"
-        variants={gridVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        {amenities.map((amenity, i) => (
-          <motion.div
-            key={amenity.title}
-            className={`relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col ${areaStyles[gridAreas[i]]}`}
-            variants={itemVariants}
-            // style={{ aspectRatio: '4/3' }}
-          >
-            {/* Image fills container absolutely */}
-            <div className="relative w-full h-full min-h-[100px]">
-              <Image
-                src={amenity.image}
-                alt={amenity.title}
-                fill
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                style={{ borderRadius: 0 }}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                priority={i < 2}
-              />
-              {/* Black gradient mask from bottom */}
-              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
-              {/* Amenity name on top of gradient */}
-              <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end">
-                <span className="text-white text-xl font-light drop-shadow-lg">{amenity.title}</span>
+      {/* Custom grid layout for desktop, vertical stack for mobile */}
+      {isMobile ? (
+        <div className="flex flex-col gap-6 w-full max-w-md mx-auto">
+          {amenities.map((amenity, i) => (
+            <div
+              key={amenity.title}
+              className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col"
+            >
+              <div className="relative w-full h-48 min-h-[100px]">
+                <Image
+                  src={amenity.image}
+                  alt={amenity.title}
+                  fill
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  style={{ borderRadius: 0 }}
+                  sizes="100vw"
+                  priority={i < 2}
+                />
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end">
+                  <span className="text-white text-xl font-light drop-shadow-lg">{amenity.title}</span>
+                </div>
               </div>
             </div>
-          </motion.div>
-        ))}
-        {/* Bottom right circular logo (on top of grid, counterclockwise) */}
-        <CircularTextLogo className="bottom-0 right-0 translate-x-1/3 translate-y-1/3" zIndex={30} reverse={true} />
-      </motion.div>
+          ))}
+        </div>
+      ) : (
+        <motion.div
+          className="relative max-w-6xl mx-auto min-h-[1200px] grid grid-cols-6 grid-rows-6 gap-8"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {amenities.map((amenity, i) => (
+            <motion.div
+              key={amenity.title}
+              className={`relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col ${areaStyles[gridAreas[i]]}`}
+              variants={itemVariants}
+            >
+              <div className="relative w-full h-full min-h-[100px]">
+                <Image
+                  src={amenity.image}
+                  alt={amenity.title}
+                  fill
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  style={{ borderRadius: 0 }}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  priority={i < 2}
+                />
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end">
+                  <span className="text-white text-xl font-light drop-shadow-lg">{amenity.title}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+          {/* Bottom right circular logo (on top of grid, counterclockwise) */}
+          <CircularTextLogo className="bottom-0 right-0 translate-x-1/3 translate-y-1/3" zIndex={30} reverse={true} />
+        </motion.div>
+      )}
     </section>
   );
 };

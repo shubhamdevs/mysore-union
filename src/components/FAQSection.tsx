@@ -35,12 +35,12 @@ const FAQSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-[28px] font-normal text-center mb-16" 
+        className="text-[22px] font-normal text-center mb-8 font-host-grotesk text-gold" 
         style={{ color: 'white', letterSpacing: '0.04em' }}
       >
         FREQUENTLY ASKED QUESTIONS
       </motion.h2>
-      <div className="divide-y divide-[#232323]">
+      <div className="divide-y divide-[#232323] flex flex-col faq-list">
         {faqs.map((faq, i) => (
           <motion.div 
             key={i}
@@ -48,10 +48,10 @@ const FAQSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="py-8"
+            className="py-3"
           >
             <motion.button
-              className="w-full text-left flex justify-between items-center text-xl md:text-3xl font-light text-white focus:outline-none px-2"
+              className="w-full text-left flex justify-between items-center font-light text-white focus:outline-none px-2 font-host-grotesk luxury-button faq-question"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               whileHover={{ x: 5 }}
             >
@@ -60,7 +60,7 @@ const FAQSection: React.FC = () => {
                 className="ml-6 text-white transition-transform duration-300"
                 animate={{ rotate: openIndex === i ? 90 : 0 }}
               >
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </motion.span>
@@ -74,7 +74,7 @@ const FAQSection: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="mt-6 text-white/80 text-xl md:text-xl leading-relaxed px-2 font-light">
+              <div className="text-white/80 leading-relaxed px-2 font-light font-montserrat faq-answer">
                 {faq.answer}
               </div>
             </motion.div>

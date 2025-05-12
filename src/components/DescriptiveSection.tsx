@@ -71,19 +71,24 @@ const DescriptiveSection: React.FC = () => {
       </div>
 
       {/* Logo with hover effect */}
-      <motion.div 
-        className="w-full md:w-1/4 flex justify-center items-center mt-12 md:mt-0 pl-12 relative z-10"
+      <motion.div
+        className="w-full md:w-1/4 flex justify-center items-center mt-12 md:mt-0 md:pl-12 relative z-10"
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="w-full h-full bg-[#222]/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#333] flex items-center justify-center">
-          <Image 
-            src="/logo.png" 
-            alt="Mysore Union Logo" 
-            width={500} 
-            height={500}
-            className="transition-transform duration-500 hover:scale-110"
-          />
+        <div className="w-full flex justify-center items-center">
+          <div className="bg-[#222]/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#333] flex items-center justify-center"
+            style={{ width: 'clamp(120px, 60vw, 220px)', height: 'clamp(120px, 60vw, 220px)' }}
+          >
+            <Image
+              src="/logo.png"
+              alt="Mysore Union Logo"
+              width={220}
+              height={220}
+              className="transition-transform duration-500 hover:scale-110 object-contain"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
         </div>
       </motion.div>
     </section>

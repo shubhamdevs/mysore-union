@@ -19,7 +19,8 @@ const BookingButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={toggleWidget}
-        className="fixed bottom-8 right-8 z-50 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-colors"
+        className="luxury-button fixed bottom-8 right-8 z-50 shadow-lg"
+        style={{ minWidth: 56, minHeight: 56 }}
       >
         <div className="flex items-center space-x-2">
           <svg
