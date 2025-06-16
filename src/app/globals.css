@@ -344,14 +344,21 @@ html, body {
   overflow-x: hidden;
   word-break: break-word;
 }
+video, video * {
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+}
+
+
 * {
   box-sizing: border-box;
 }
 
-.container, .section-bg, main, section {
+/* .container, .section-bg, main, section {
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 @media (max-width: 900px) {
   .container, .section-bg, main, section {
