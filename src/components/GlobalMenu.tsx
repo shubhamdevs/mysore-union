@@ -27,6 +27,25 @@ const GlobalMenu: React.FC = () => {
   const menuBtnRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement | null>(null);
 
+  // Images for right section
+  const images = [
+    '/images/aminities/Lounge.jpg',
+    '/images/aminities/snooker1.jpg',
+    '/images/aminities/Badminton2.jpg',
+    '/images/aminities/squash.jpg',
+    '/images/aminities/gym1.jpg',
+    '/images/aminities/Badminton.jpg',
+  ];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    if (!open) return;
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [open]);
+
   // Hide menu button when footer is in view
   useEffect(() => {
     const handleScroll = () => {
@@ -90,22 +109,111 @@ const GlobalMenu: React.FC = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[200] flex" // overlay
+            className="fixed inset-0 z-[200] flex w-full" // overlay
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             {/* Slide-in menu panel */}
             <motion.div
-              className="w-full md:w-1/2 max-w-[600px] h-full flex flex-col justify-between p-12 md:p-20 bg-gray/60 backdrop-blur-lg noisy-glass z-10 relative"
+              className="w-full h-full flex flex-row bg-gray/60 backdrop-blur-lg noisy-glass z-10 relative"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ duration: 0.2, type: 'spring', stiffness: 300, damping: 30 }}
             >
-              {/* Close button inside menu, top right */}
+              {/* Left section: menu links and socials */}
+              <div className="flex-1 flex flex-col justify-between p-8 md:p-20">
+                <ul className="space-y-6 md:space-y-8 mt-8">
+                  {sections.map((section) => (
+                    <li key={section.id}>
+                      <button
+                        className="text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white transition-colors"
+                        style={{
+                          fontFamily: 'Host Grotesk, sans-serif',
+                          textAlign: 'left',
+                        }}
+                        onClick={() => handleSectionClick(section.id)}
+                      >
+                        {section.name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                {/* Socials and copyright */}
+                <div className="flex flex-col gap-6">
+                  <div className="flex gap-4 mb-2">
+                    {socials.map((s) => (
+                      <a
+                        key={s.name}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 flex items-center justify-center rounded-full border border-[#232323] hover:bg-[#232323] text-white transition-colors"
+                      >
+                        {s.icon}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {/* Right section: image slideshow, only on large screens */}
+              <div className="hidden lg:flex flex-1 items-center justify-center p-8">
+                <div className="relative w-full h-[400px] max-w-[400px] rounded-2xl overflow-hidden shadow-lg bg-slate-600/15">
+                  <AnimatePresence mode="sync">
+                    <motion.div
+                      key={images[currentImage]}
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.03 }}
+                      transition={{ opacity: { duration: 0.25 }, scale: { duration: 0.3 }, type: 'spring', stiffness: 300, damping: 30 }}
+                      className="absolute inset-0"
+                      style={{ zIndex: 1 }}
+                    >
+                      <Image
+                        src={images[currentImage]}
+                        alt="Menu Visual"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Close button for large screens, bottom center */}
+              <div className="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 z-[100] transition-opacity ">
+                <button
+                  className="luxury-button px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px]"
+                  style={{ fontFamily: 'Host Grotesk, sans-serif' }}
+                  onClick={() => setOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <span className="inline-block w-6 h-6">
+                    {/* X icon */}
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-6 h-6"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </span>
+                  <span className="font-semibold">Close</span>
+                </button>
+              </div>
+
+
+
+              {/* Close button for small screens, top right */}
               <button
-                className="absolute top-6 right-6 luxury-button px-4 py-2 flex items-center gap-2 shadow text-base font-medium z-20"
+                className="absolute top-6 right-6 luxury-button px-4 py-2 flex items-center gap-2 shadow text-base font-medium z-20 lg:hidden"
                 style={{ fontFamily: 'Host Grotesk, sans-serif' }}
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
@@ -127,40 +235,6 @@ const GlobalMenu: React.FC = () => {
                 </span>
                 <span className="font-semibold">Close</span>
               </button>
-              <div>
-                <ul className="space-y-6 md:space-y-8 mt-8">
-                  {sections.map((section) => (
-                    <li key={section.id}>
-                      <button
-                        className="text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white transition-colors"
-                        style={{
-                          fontFamily: "Host Grotesk, sans-serif",
-                          textAlign: "left",
-                        }}
-                        onClick={() => handleSectionClick(section.id)}
-                      >
-                        {section.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {/* Socials and copyright */}
-              <div className="flex flex-col gap-6">
-                <div className="flex gap-4 mb-2">
-                  {socials.map((s) => (
-                    <a
-                      key={s.name}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 flex items-center justify-center rounded-full border border-[#232323] hover:bg-[#232323] text-white transition-colors"
-                    >
-                      {s.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         )}
