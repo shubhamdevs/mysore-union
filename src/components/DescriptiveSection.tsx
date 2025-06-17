@@ -30,41 +30,44 @@ const DescriptiveSection: React.FC = () => {
   }, []);
 
   return (
-    <section 
-      ref={ref} 
+    <section
+      ref={ref}
       className="relative flex flex-col md:flex-row items-center justify-between min-h-[60vh] px-6 md:px-20 py-24 overflow-hidden section-bg"
     >
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" />
-      
+      < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" />
+
       {/* Mouse-following gradient */}
-      <div 
+      < div
         className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
         style={{
           background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
-        }}
+        }
+        }
       />
 
       {/* Text with scroll-reveal mask */}
-      <div className="flex-1 w-full md:w-3/4 relative z-10">
+      <div className="flex-1 w-full md:w-3/4 relative z-10" >
         <div className="relative" style={{ minHeight: 220 }}>
-          <div ref={textRef} className="relative">
-            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-light">
+          <div ref={textRef} className="relative" >
+            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-light" >
               {description}
             </span>
             {/* Moving mask overlay */}
             <motion.div
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                width: '100%',
-                height: '100%',
-                pointerEvents: 'none',
-                background: 'linear-gradient(to bottom, rgba(24,24,24,0.45) 80%, rgba(24,24,24,0.05) 100%)',
-                backdropFilter: 'blur(2.5px)',
-                translateY,
-              }}
+              style={
+                {
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  width: '100%',
+                  height: '100%',
+                  pointerEvents: 'none',
+                  background: 'linear-gradient(to bottom, rgba(24,24,24,0.45) 80%, rgba(24,24,24,0.05) 100%)',
+                  backdropFilter: 'blur(2.5px)',
+                  translateY,
+                }
+              }
             />
           </div>
         </div>
@@ -76,7 +79,7 @@ const DescriptiveSection: React.FC = () => {
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center items-center" >
           <div className="bg-[#222]/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#333] flex items-center justify-center"
             style={{ width: 'clamp(120px, 60vw, 220px)', height: 'clamp(120px, 60vw, 220px)' }}
           >

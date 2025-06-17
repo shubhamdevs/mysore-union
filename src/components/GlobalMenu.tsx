@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa";
 
-
 import Image from "next/image";
 
 const sections = [
@@ -16,8 +15,6 @@ const sections = [
 
 const socials = [
   { name: "Instagram", icon: <IoLogoInstagram />, url: "#" },
-  // { name: "Dribbble", icon: "/icons/dribbble.svg", url: "#" },
-  // { name: "Behance", icon: "/icons/behance.svg", url: "#" },
   { name: "LinkedIn", icon: <FaLinkedinIn />, url: "#" },
 ];
 
@@ -72,21 +69,30 @@ const GlobalMenu: React.FC = () => {
     }, 200);
   };
 
+  // Replace MUI with custom isMobile logic
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <>
-      {/* Floating menu button */}
+      {/* Floating menu and reserve buttons */}
       <div
         ref={menuBtnRef}
-        className={`fixed left-1/2 -translate-x-1/2 bottom-8 z-[100] transition-opacity ${hide ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
+        className={`fixed sm:left-1/2  -translate-x-1/2 bottom-8 z-[100] flex gap-2 sm:gap-4 transition-opacity ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        style={{ left: '50%', transform: 'translateX(-50%)' }}
       >
         <button
-          className="luxury-button px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px]"
+          className="luxury-button px-2 sm:px-2 lg:px-8 py-2 flex items-center gap-1 sm:gap-3 shadow-lg text-[5px] sm:text-base lg:text-lg font-medium min-h-[40px] sm:min-h-[48px]"
           style={{ fontFamily: "Host Grotesk, sans-serif" }}
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
-          <span className="inline-block w-6 h-6">
+          <span className="inline-block w-5 sm:w-6 h-5 sm:h-6">
             {/* Hamburger icon */}
             <svg
               viewBox="0 0 24 24"
@@ -95,15 +101,25 @@ const GlobalMenu: React.FC = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-6 h-6"
+              className="w-4 sm:w-6 h-4 sm:h-6"
             >
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </span>
-          <span className="font-semibold"> Menu </span>
+          <span className="font-semibold "> Menu </span>
         </button>
+        {isMobile && (
+          <button
+            className="luxury-button px-3 sm:px-6 py-2 flex items-center gap-1 sm:gap-3 shadow-lg text-sm sm:text-base font-medium min-h-[40px] sm:min-h-[48px]"
+            style={{ fontFamily: "Host Grotesk, sans-serif" }}
+            onClick={() => handleSectionClick('reserve')}
+            aria-label="Reserve"          >
+            <span className="font-semibold">Reserve</span>
+            <span className="inline-block ml-1 text-lg sm:text-xl">↗</span>
+          </button>
+        )}
       </div>
       {/* Overlay menu */}
       <AnimatePresence>
