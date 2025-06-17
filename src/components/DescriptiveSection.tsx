@@ -1,16 +1,13 @@
 'use client';
 import React, { useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { TextReveal } from "../components/magicui/text-reveal";
 
 const description = `It All Begins Here -  where luxury meets tradition in a sanctuary of modern amenities. Discover exquisite nature, wellness, and recreation—experience state-of-the-art lifestyle amenities and family fun zones. Mysore Union is your go-to destination for unforgettable moments, premium community, and 360° growth.`;
 
 const DescriptiveSection: React.FC = () => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const textRef = React.useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
-  // Animate mask translateY from 0% to 100%
-  const translateY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -44,32 +41,13 @@ const DescriptiveSection: React.FC = () => {
           background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
         }
         }
-      />
-
-      {/* Text with scroll-reveal mask */}
-      <div className="flex-1 w-full md:w-3/4 relative z-10" >
-        <div className="relative" style={{ minHeight: 220 }}>
-          <div ref={textRef} className="relative" >
-            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-light" >
-              {description}
-            </span>
-            {/* Moving mask overlay */}
-            <motion.div
-              style={
-                {
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  width: '100%',
-                  height: '100%',
-                  pointerEvents: 'none',
-                  background: 'linear-gradient(to bottom, rgba(24,24,24,0.45) 80%, rgba(24,24,24,0.05) 100%)',
-                  backdropFilter: 'blur(2.5px)',
-                  translateY,
-                }
-              }
-            />
-          </div>
+      />      {/* Text section without mask */}
+      <div className="flex-1 w-full md:w-3/4 relative z-10">
+        <div className="relative" style={{ minHeight: 220 }}>          <div className="relative">
+          <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-light">
+            {description}
+          </span>
+        </div>
         </div>
       </div>
 
