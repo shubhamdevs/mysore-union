@@ -14,7 +14,17 @@ const gymImages = [
   { src: '/images/amenities/gym6.jpg', title: 'Fitness Studio' }
 ]
 
-
+// Scrolling row images
+const scrollingImages = [
+  { title: "Badminton Courts", image: "/images/amenities/Badminton.jpg" },
+  { title: "Air Rifle Range", image: "/images/amenities/AirRifle.jpg" },
+  { title: "Lounge Area", image: "/images/amenities/Lounge.jpg" },
+  { title: "Pool Side View", image: "/images/amenities/LoungeSwim.jpg" },
+  { title: "Lawn Tennis", image: "/images/amenities/lawn.jpg" },
+  { title: "Recreation Area", image: "/images/amenities/PoolTable.jpg" },
+  { title: "Badminton Arena", image: "/images/amenities/Badminton2.jpg" },
+  { title: "Garden View", image: "/images/amenities/lawn2.jpg" },
+];
 
 const amenities = [
   {
@@ -62,7 +72,15 @@ const gridVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, scale: 0.95, y: 40 },
-  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut" as any // Type assertion to avoid TypeScript error
+    }
+  },
 };
 
 const gridAreas = [
@@ -112,6 +130,39 @@ const CircularTextLogo = ({ className = '', style = {}, zIndex = 10, reverse = f
   </motion.div>
 );
 
+// ScrollingRow component for continuous right to left animation
+const ScrollingRow: React.FC<{ images: Array<{ title: string, image: string }> }> = ({ images }) => {
+  return (
+    <div className="w-full overflow-hidden mt-8">
+      <div className="flex gap-6 animate-scrolling-row">
+        {/* Double the images to create seamless looping */}
+        {[...images, ...images].map((item, i) => (
+          <div
+            key={`${item.title}-${i}`}
+            className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex-shrink-0"
+            style={{ width: '300px', height: '200px' }}
+          >
+            <div className="relative w-full h-full">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                style={{ borderRadius: 0 }}
+                sizes="300px"
+              />
+              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
+              <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end">
+                <span className="text-white text-xl font-light drop-shadow-lg">{item.title}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Amenities: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
 
@@ -141,9 +192,8 @@ const Amenities: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-4 md:px-16 overflow-visible section-bg" >
-      {/* Gradient background */}
-      < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" />
+    <section ref={sectionRef} className="relative py-24 sm:py-32 px-4 md:px-16 overflow-visible section-bg" >      {/* Gradient background */}
+      < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90 z-0" />
 
       {/* Mouse-following gradient */}
       < div
@@ -191,46 +241,56 @@ const Amenities: React.FC = () => {
                 </div>
               ))
             }
+
+            {/* Mobile Scrolling Row */}
+            <ScrollingRow images={scrollingImages} />
           </div>
         ) : (
-          <motion.div
-            className="relative max-w-6xl mx-auto min-h-[1200px] grid grid-cols-6 grid-rows-6 gap-8"
-            variants={gridVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }
-            }
-          >
-            {
-              amenities.map((amenity, i) => (
-                <motion.div
-                  key={amenity.title}
-                  className={`relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col ${areaStyles[gridAreas[i]]}`}
-                  variants={itemVariants}
-                >
-                  <div className="relative w-full h-full min-h-[100px]" >
-                    <Image
-                      src={amenity.image}
-                      alt={amenity.title}
-                      fill
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      style={{ borderRadius: 0 }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      priority={i < 2}
-                    />
-                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                    <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end" >
-                      <span className="text-white text-xl font-light drop-shadow-lg" > {amenity.title} </span>
+          <>
+            <motion.div
+              className="relative max-w-6xl mx-auto min-h-[900px] grid grid-cols-6 grid-rows-6 gap-8"
+              variants={gridVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }
+              }
+            >
+              {
+                amenities.map((amenity, i) => (
+                  <motion.div
+                    key={amenity.title}
+                    className={`relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col ${areaStyles[gridAreas[i]]}`}
+                    variants={itemVariants}
+                  >
+                    <div className="relative w-full h-full min-h-[100px]" >
+                      <Image
+                        src={amenity.image}
+                        alt={amenity.title}
+                        fill
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        style={{ borderRadius: 0 }}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={i < 2}
+                      />
+                      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                      <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end" >
+                        <span className="text-white text-xl font-light drop-shadow-lg" > {amenity.title} </span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+
+            </motion.div>            {/* Desktop Scrolling Row */}
+            <div className="relative z-30 max-w-6xl mx-auto mb-16">
+              <h3 className="text-xl sm:text-6xl text-white mb-6 ml-2 font-light relative z-20 drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>More Amenities</h3>
+              <ScrollingRow images={scrollingImages} />
+            </div>
             {/* Bottom right circular logo (on top of grid, counterclockwise) */}
-            <CircularTextLogo className="bottom-0 right-0 translate-x-1/3 translate-y-1/3" zIndex={30} reverse={true} />
-          </motion.div>
+            <CircularTextLogo className="bottom-8 right-0 translate-x-1/3 translate-y-1/3" zIndex={30} reverse={true} />
+          </>
         )}
     </section>
   );
 };
 
-export default Amenities; 
+export default Amenities;

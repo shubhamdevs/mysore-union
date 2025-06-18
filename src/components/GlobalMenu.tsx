@@ -26,12 +26,12 @@ const GlobalMenu: React.FC = () => {
 
   // Images for right section
   const images = [
-    '/images/aminities/Lounge.jpg',
-    '/images/aminities/snooker1.jpg',
-    '/images/aminities/Badminton2.jpg',
-    '/images/aminities/squash.jpg',
-    '/images/aminities/gym1.jpg',
-    '/images/aminities/Badminton.jpg',
+    '/images/amenities/Lounge.jpg',
+    '/images/amenities/snooker1.jpg',
+    '/images/amenities/Badminton2.jpg',
+    '/images/amenities/squash.jpg',
+    '/images/amenities/gym1.jpg',
+    '/images/amenities/Badminton.jpg',
   ];
   const [currentImage, setCurrentImage] = useState(0);
 
