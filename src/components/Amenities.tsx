@@ -5,38 +5,49 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
+const gymImages = [
+  { src: '/images/amenities/gym1.jpg', title: 'Modern Fitness Equipment' },
+  { src: '/images/amenities/gym2.jpg', title: 'Cardio Training Zone' },
+  { src: '/images/amenities/gym3.jpg', title: 'Weight Training Area' },
+  { src: '/images/amenities/gym4.jpg', title: 'Personal Training Space' },
+  { src: '/images/amenities/gym5.jpg', title: 'Advanced Workout Machines' },
+  { src: '/images/amenities/gym6.jpg', title: 'Fitness Studio' }
+]
+
+
+
 const amenities = [
   {
     title: "State-of-the-Art Fitness",
-    image: "/images/amenities-1.png",
+    image: "/images/amenities/gym1.jpg",
   },
   {
     title: "Serene Yoga Studio",
-    image: "/images/amenities-2.png",
+    image: "/images/amenities/gym2.jpg",
   },
   {
     title: "Championship Squash Court",
-    image: "/images/amenities-3.png",
+    image: "/images/amenities/squash.jpg",
   },
   {
     title: "Family Fun Zones",
-    image: "/images/amenities-bar.png",
+    image: "/images/amenities/PlayArea1.JPG",
   },
   {
     title: "Semi-Olympic Pool",
-    image: "/images/amenities-1.png",
+    image: "/images/amenities/SwimmingPool2.jpg",
   },
   {
     title: "Fine Dining",
-    image: "/images/amenities-food.png",
+    image: "/images/amenities/PlayArea.JPG",
   },
   {
     title: "Exclusive Events",
-    image: "/images/amenities-dance.png",
+    image: "/images/amenities/PoolTable.jpg",
   },
   {
     title: "Concierge Service",
-    image: "/images/amenities-aesthetic.png",
+    image: "/images/amenities/Lounge.jpg",
   },
 ];
 
@@ -163,15 +174,15 @@ const Amenities: React.FC = () => {
                   className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col"
                 >
                   <div className="relative w-full h-48 min-h-[100px]" >
-                    {/* // <Image
-                      //   src={amenity.image}
-                      //   alt={amenity.title}
-                      //   fill
-                      //   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      //   style={{ borderRadius: 0 }}
-                      //   sizes="100vw"
-                      //   priority={i < 2}
-                      // /> */}
+                    <Image
+                      src={amenity.image}
+                      alt={amenity.title}
+                      fill
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      style={{ borderRadius: 0 }}
+                      sizes="100vw"
+                      priority={i < 2}
+                    />
                     <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
                     <div className="absolute bottom-0 left-0 w-full z-20 p-4 flex items-end" >
                       <span className="text-white text-xl font-light drop-shadow-lg" > {amenity.title} </span>
