@@ -29,60 +29,63 @@ const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="w-full mx-auto my-32 px-4 py-20 bg-[#181818] rounded-3xl shadow-2xl border border-[#232323]">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-[22px] font-normal text-center mb-8 font-host-grotesk text-gold"
-        style={{ color: 'white', letterSpacing: '0.04em' }}
-      >
-        FREQUENTLY ASKED QUESTIONS
-      </motion.h2>
-      <div className="   divide-y divide-[#232323] flex flex-col faq-list">
-        {faqs.map((faq, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.9 }}
-            className="py-1 md:py-3 sm:py-2 "
-          >
-            <motion.button
-              className="w-full text-left flex justify-between items-center font-light text-white focus:outline-none px-2 font-host-grotesk luxury-button faq-question"
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              whileHover={{ x: 5 }}
-            >
-              {faq.question}
-              <motion.span
-                className="ml-6 text-white transition-transform duration-300"
-                animate={{ rotate: openIndex === i ? 90 : 0 }}
-              >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </motion.span>
-            </motion.button>
+    <section id="faq" className="w-full flex flex-1  px-4 py-8 sm:py-16 sm:px-6 md:px-12 lg:px-6 ">
+      <div className='w-[90%] md:w-full mx-auto  px-4 py-20 bg-[#181818] rounded-3xl shadow-2xl border border-[#232323]'>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-[22px] font-normal text-center mb-8 font-host-grotesk text-gold"
+          style={{ color: 'white', letterSpacing: '0.04em' }}
+        >
+          FREQUENTLY ASKED QUESTIONS
+        </motion.h2>
+        <div className=" items-center  divide-y divide-[#232323] flex flex-col faq-list">
+          {faqs.map((faq, i) => (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{
-                height: openIndex === i ? 'auto' : 0,
-                opacity: openIndex === i ? 1 : 0
-              }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.9 }}
+              className="py-1 md:py-3 sm:py-2 w-[90%]"
             >
-              <div className="text-white/80 leading-relaxed px-2 font-light font-montserrat faq-answer">
-                {faq.answer}
-              </div>
+              <motion.button
+                className="w-full text-left flex justify-between items-center font-light text-white focus:outline-none px-2 font-host-grotesk luxury-button faq-question"
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                whileHover={{ x: 5 }}
+              >
+                {faq.question}
+                <motion.span
+                  className="ml-6 text-white transition-transform duration-300"
+                  animate={{ rotate: openIndex === i ? 90 : 0 }}
+                >
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </motion.span>
+              </motion.button>
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{
+                  height: openIndex === i ? 'auto' : 0,
+                  opacity: openIndex === i ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="text-white/80 leading-relaxed px-2 font-light font-montserrat faq-answer">
+                  {faq.answer}
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
+
     </section>
   );
 };
