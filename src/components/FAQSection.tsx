@@ -30,25 +30,27 @@ const FAQSection: React.FC = () => {
 
   return (
     <section id="faq" className="w-full mx-auto my-32 px-4 py-20 bg-[#181818] rounded-3xl shadow-2xl border border-[#232323]">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-[22px] font-normal text-center mb-8 font-host-grotesk text-gold" 
+        className="text-[22px] font-normal text-center mb-8 font-host-grotesk text-gold"
         style={{ color: 'white', letterSpacing: '0.04em' }}
       >
         FREQUENTLY ASKED QUESTIONS
       </motion.h2>
-      <div className="divide-y divide-[#232323] flex flex-col faq-list">
+      <div className="   divide-y divide-[#232323] flex flex-col faq-list">
         {faqs.map((faq, i) => (
-          <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="py-3"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="py-1 md:py-3 sm:py-2 "
           >
             <motion.button
               className="w-full text-left flex justify-between items-center font-light text-white focus:outline-none px-2 font-host-grotesk luxury-button faq-question"
@@ -56,7 +58,7 @@ const FAQSection: React.FC = () => {
               whileHover={{ x: 5 }}
             >
               {faq.question}
-              <motion.span 
+              <motion.span
                 className="ml-6 text-white transition-transform duration-300"
                 animate={{ rotate: openIndex === i ? 90 : 0 }}
               >
@@ -67,7 +69,7 @@ const FAQSection: React.FC = () => {
             </motion.button>
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ 
+              animate={{
                 height: openIndex === i ? 'auto' : 0,
                 opacity: openIndex === i ? 1 : 0
               }}
