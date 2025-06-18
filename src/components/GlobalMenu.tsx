@@ -87,7 +87,7 @@ const GlobalMenu: React.FC = () => {
         style={{ left: '50%', transform: 'translateX(-50%)' }}
       >
         <button
-          className="luxury-button px-2 sm:px-2 lg:px-8 py-2 flex items-center gap-1 sm:gap-3 shadow-lg text-[5px] sm:text-base lg:text-lg font-medium min-h-[40px] sm:min-h-[48px]"
+          className="luxury-button px-2 sm:px-2 lg:px-8 py-2 flex items-center gap-1 sm:gap-3 shadow-lg text-[5px] sm:text-sm  lg:text-lg font-medium min-h-[40px] sm:min-h-[48px]"
           style={{ fontFamily: "Host Grotesk, sans-serif" }}
           onClick={() => setOpen(true)}
           aria-label="Open menu"
@@ -108,15 +108,15 @@ const GlobalMenu: React.FC = () => {
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </span>
-          <span className="font-semibold "> Menu </span>
+          <span className="font-semibold text-[10px] sm:text-lg"> Menu </span>
         </button>
         {isMobile && (
           <button
-            className="luxury-button px-3 sm:px-6 py-2 flex items-center gap-1 sm:gap-3 shadow-lg text-sm sm:text-base font-medium min-h-[40px] sm:min-h-[48px]"
+            className="luxury-button px-[2px] sm:px-6 py-2 flex items-center justify-between  sm:gap-3 shadow-lg  font-medium min-h-[40px] sm:min-h-[48px]"
             style={{ fontFamily: "Host Grotesk, sans-serif" }}
             onClick={() => handleSectionClick('reserve')}
             aria-label="Reserve"          >
-            <span className="font-semibold">Reserve</span>
+            <span className="font-semibold text-[10px]  sm:text-sm md:text-lg">Reserve</span>
             <span className="inline-block ml-1 text-lg sm:text-xl">↗</span>
           </button>
         )}

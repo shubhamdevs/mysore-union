@@ -22,7 +22,7 @@ const Hero = () => {
         transition={{ duration: 0.6 }}
         className="absolute top-0 left-0 w-full flex justify-center md:justify-between  items-start px-4 sm:px-6 pt-4 sm:pt-6 z-20"
       >
-        <h1 className="text-white text-4xl sm:text-6xl  md:text-8xl mt-[2rem] md:mt-0 font-normal leading-none select-none">Mysore Union</h1>
+        <h1 className="text-white text-6xl  md:text-8xl mt-[4rem] md:mt-0 font-normal leading-none select-none">Mysore Union</h1>
         {
           !isMobile && (
             <motion.a
