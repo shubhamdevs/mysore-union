@@ -41,13 +41,15 @@ const DescriptiveSection: React.FC = () => {
           background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
         }
         }
-      />      {/* Text section without mask */}
-      <div className="flex-1 w-full md:w-3/4 relative z-10">
-        <div className="relative" style={{ minHeight: 220 }}>          <div className="relative">
-          <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-light">
-            {description}
-          </span>
-        </div>
+      />
+      {/* Text section without mask */}
+      <div className="flex-1 w-[90%] md:w-3/4 relative z-10">
+        <div className="relative" style={{ minHeight: 220 }}>
+          <div className="relative">
+            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-light">
+              {description}
+            </span>
+          </div>
         </div>
       </div>
 
