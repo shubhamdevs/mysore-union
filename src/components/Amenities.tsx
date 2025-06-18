@@ -216,7 +216,7 @@ const Amenities: React.FC = () => {
       {/* Custom grid layout for desktop, vertical stack for mobile */}
       {
         isMobile ? (
-          <div className="flex flex-col gap-6 w-full max-w-md mx-auto" >
+          <div className="flex flex-col gap-6 w-full max-w-md mx-auto mb-16 " >
             {
               amenities.map((amenity, i) => (
                 <div
@@ -281,12 +281,12 @@ const Amenities: React.FC = () => {
                 ))}
 
             </motion.div>            {/* Desktop Scrolling Row */}
-            <div className="relative z-30 max-w-6xl mx-auto mb-16">
+            <div className="relative z-30 max-w-6xl mx-auto mb-44">
               <h3 className="text-xl sm:text-6xl text-white mb-6 ml-2 font-light relative z-20 drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>More Amenities</h3>
               <ScrollingRow images={scrollingImages} />
             </div>
             {/* Bottom right circular logo (on top of grid, counterclockwise) */}
-            <CircularTextLogo className="bottom-8 right-0 translate-x-1/3 translate-y-1/3" zIndex={30} reverse={true} />
+            <CircularTextLogo className="bottom-32 right-0 translate-x-1/3 translate-y-1/3" zIndex={30} reverse={true} />
           </>
         )}
     </section>
