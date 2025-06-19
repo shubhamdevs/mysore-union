@@ -41,13 +41,13 @@ const Hero = () => {
       {/* Video background with overlay */}
       <div className="w-full h-screen">
         <div className="relative w-full h-full overflow-hidden">
-          {/* {
+          {
             isMobile ? (
-              // <video src="/videos/mob-hero-background.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full border-none" />
-            ): (
-                // <video src="/videos/hero_background.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full border-none" />
-              )
-          } */}
+              <video src="/videos/mob-hero-background.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full border-none" />
+            ) : (
+              <video src="/videos/hero_background.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full border-none" />
+            )
+          }
 
           {/* Blackish overlay for better text visibility */}
           <div className="absolute inset-0 bg-black/70 z-10"></div>          <div className="absolute inset-0 z-20">

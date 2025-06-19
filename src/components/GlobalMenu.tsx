@@ -14,8 +14,8 @@ const sections = [
 ];
 
 const socials = [
-  { name: "Instagram", icon: <IoLogoInstagram />, url: "#" },
-  { name: "LinkedIn", icon: <FaLinkedinIn />, url: "#" },
+  { name: "Instagram", icon: <IoLogoInstagram className="w-5 h-5 sm:w-8 sm:h-8" />, url: "#" },
+  { name: "LinkedIn", icon: <FaLinkedinIn className="w-5 h-5 sm:w-8 sm:h-8" />, url: "#" },
 ];
 
 const GlobalMenu: React.FC = () => {
@@ -23,23 +23,22 @@ const GlobalMenu: React.FC = () => {
   const [hide, setHide] = useState(false);
   const menuBtnRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement | null>(null);
-
-  // Images for right section
-  const images = [
-    '/images/amenities/Lounge.jpg',
-    '/images/amenities/snooker1.jpg',
-    '/images/amenities/Badminton2.jpg',
-    '/images/amenities/squash.jpg',
-    '/images/amenities/gym1.jpg',
-    '/images/amenities/Badminton.jpg',
+  // Images for right section with descriptions
+  const experiences = [
+    { title: "Lounge Area", desc: "Relax in our luxurious lounge", img: '/images/amenities/Lounge.jpg' },
+    { title: "Snooker & Billiards", desc: "Challenge friends for a game", img: '/images/amenities/snooker1.jpg' },
+    { title: "Badminton Courts", desc: "World-class indoor courts", img: '/images/amenities/Badminton2.jpg' },
+    { title: "Squash Court", desc: "Professional glass-backed court", img: '/images/amenities/squash.jpg' },
+    { title: "Fitness Center", desc: "State-of-the-art equipment", img: '/images/amenities/gym1.jpg' },
+    { title: "Badminton Arena", desc: "Multiple courts for tournaments", img: '/images/amenities/Badminton.jpg' },
   ];
-  const [currentImage, setCurrentImage] = useState(0);
+  const [carouselIdx, setCarouselIdx] = useState(0);
 
   useEffect(() => {
     if (!open) return;
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000);
+      setCarouselIdx((prev) => (prev + 1) % experiences.length);
+    }, 3500);
     return () => clearInterval(interval);
   }, [open]);
 
@@ -132,69 +131,122 @@ const GlobalMenu: React.FC = () => {
           >
             {/* Slide-in menu panel */}
             <motion.div
-              className="w-full h-full flex flex-row bg-gray/60 backdrop-blur-lg noisy-glass z-10 relative"
+              className="w-full h-full flex flex-row bg-gray/20 backdrop-blur-lg noisy-glass z-10 relative"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ duration: 0.2, type: 'spring', stiffness: 300, damping: 30 }}
             >
               {/* Left section: menu links and socials */}
-              <div className="flex-1 flex flex-col justify-between p-8 md:p-20">
-                <ul className="space-y-6 md:space-y-8 mt-8">
-                  {sections.map((section) => (
-                    <li key={section.id}>
-                      <button
-                        className="text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white transition-colors"
-                        style={{
-                          fontFamily: 'Host Grotesk, sans-serif',
-                          textAlign: 'left',
+              <div className="flex-1 flex flex-col justify-center items-center  space-y-6    border-2 border-white border-solid">
+                <div className=" flex flex-col justify-between    md:p-20     border-2 border-white border-solid">
+                  <ul className="space-y-12 md:space-y-8 mt-0 md:mt-4">
+                    {sections.map((section) => (
+                      <li key={section.id}>
+                        <button
+                          className="text-3xl sm:text-4xl hover:scale-105 transition-all tap:scale-95 md:text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white"
+                          style={{
+                            fontFamily: 'Host Grotesk, sans-serif',
+                            textAlign: 'left',
+                          }}
+                          onClick={() => handleSectionClick(section.id)}
+                        >
+                          {section.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Mobile Carousel */}
+                {/* <div className="lg:hidden w-full px-4 mt-8 mb-6">
+                  <div className="relative w-full h-[200px] sm:h-[240px]">
+                    {experiences.map((exp, i) => (
+                      <motion.div
+                        key={exp.title}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{
+                          opacity: i === carouselIdx ? 1 : 0,
+                          scale: i === carouselIdx ? 1 : 0.95,
+                          zIndex: i === carouselIdx ? 20 : 10
                         }}
-                        onClick={() => handleSectionClick(section.id)}
+                        transition={{ duration: 0.5 }}
+                        className="absolute left-0 top-0 w-full h-full"
+                        style={{
+                          boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)',
+                          borderRadius: '1rem',
+                          background: '#232323',
+                          border: '1.5px solid #333',
+                        }}
                       >
-                        {section.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+                        <Image
+                          src={exp.img}
+                          alt={exp.title}
+                          fill
+                          sizes="100vw"
+                          className="object-cover rounded-t-[1rem]"
+                          priority={i === 0}
+                        />
+                        <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/80 to-transparent">
+                          <h3 className="text-white text-base sm:text-lg font-medium">{exp.title}</h3>
+                          <p className="text-white/80 text-xs sm:text-sm mt-1">{exp.desc}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div> */}
+
                 {/* Socials and copyright */}
-                <div className="flex flex-col gap-6">
-                  <div className="flex gap-4 mb-2">
+                <div className="flex flex-col gap-4 mb-4">
+                  <div className="flex gap-4">
                     {socials.map((s) => (
                       <a
                         key={s.name}
                         href={s.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 flex items-center justify-center rounded-full border border-[#232323] hover:bg-[#232323] text-white transition-colors"
+                        className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center rounded-full border border-[#232323] hover:bg-[#232323] text-white transition-colors"
                       >
                         {s.icon}
                       </a>
                     ))}
                   </div>
                 </div>
-              </div>
-              {/* Right section: image slideshow, only on large screens */}
+              </div>{/* Right section: image carousel, only on large screens */}
               <div className="hidden lg:flex flex-1 items-center justify-center p-8">
-                <div className="relative w-full h-[400px] max-w-[400px] rounded-2xl overflow-hidden shadow-lg bg-slate-600/15">
-                  <AnimatePresence mode="sync">
+                <div className="relative w-full h-[400px] max-w-[500px]">
+                  {experiences.map((exp, i) => (
                     <motion.div
-                      key={images[currentImage]}
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.03 }}
-                      transition={{ opacity: { duration: 0.25 }, scale: { duration: 0.3 }, type: 'spring', stiffness: 300, damping: 30 }}
-                      className="absolute inset-0"
-                      style={{ zIndex: 1 }}
+                      key={exp.title}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{
+                        opacity: i === carouselIdx ? 1 : 0,
+                        scale: i === carouselIdx ? 1 : 0.95,
+                        zIndex: i === carouselIdx ? 20 : 10
+                      }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute left-0 top-0 w-full h-full"
+                      style={{
+                        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)',
+                        borderRadius: '1.5rem',
+                        background: '#232323',
+                        border: '1.5px solid #333',
+                      }}
                     >
                       <Image
-                        src={images[currentImage]}
-                        alt="Menu Visual"
+                        src={exp.img}
+                        alt={exp.title}
                         fill
-                        style={{ objectFit: 'cover' }}
-                        priority
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover rounded-t-[1.5rem]"
+                        priority={i === 0}
                       />
+                      <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 className="text-white text-lg sm:text-xl font-medium">{exp.title}</h3>
+                        <p className="text-white/80 text-sm sm:text-base mt-1">{exp.desc}</p>
+                      </div>
                     </motion.div>
-                  </AnimatePresence>
+                  ))}
                 </div>
               </div>
 

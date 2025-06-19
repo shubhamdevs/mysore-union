@@ -3,23 +3,27 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { IoLogoInstagram } from "react-icons/io5";
+import { FaLinkedinIn } from "react-icons/fa";
+
+
+
 
 const socials = [
-  { name: "Instagram", icon: "/icons/instagram.svg", url: "#" },
-  { name: "Dribbble", icon: "/icons/dribbble.svg", url: "#" },
-  { name: "Behance", icon: "/icons/behance.svg", url: "#" },
-  { name: "LinkedIn", icon: "/icons/linkedin.svg", url: "#" },
+  { name: "Instagram", icon: <IoLogoInstagram />, url: "#" },
+  { name: "LinkedIn", icon: <FaLinkedinIn />, url: "#" },
 ];
 
+
 const Footer: React.FC = () => (
-  <motion.footer 
+  <motion.footer
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
     viewport={{ once: true }}
-    className="w-full bg-[#181818] border-t border-[#232323] py-8 px-4 flex flex-col md:flex-row items-center justify-between gap-6"
+    className="w-full bg-[#181818] border-t border-[#232323] py-8 px-4 flex flex-col md:flex-row items-center justify-between gap-6  rounded-t-3xl "
   >
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
@@ -30,7 +34,7 @@ const Footer: React.FC = () => (
       <span className="text-white text-lg font-light">Mysore Union</span>
     </motion.div>
 
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
@@ -51,12 +55,13 @@ const Footer: React.FC = () => (
           transition={{ duration: 0.3, delay: 0.4 + i * 0.1 }}
           viewport={{ once: true }}
         >
-          <Image src={s.icon} alt={s.name} width={20} height={20} className="w-5 h-5" />
+          {s.icon}
+          {/* <Image src={s.icon} alt={s.name} width={20} height={20} className="w-5 h-5" /> */}
         </motion.a>
       ))}
     </motion.div>
 
-    <motion.span 
+    <motion.span
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.4 }}
