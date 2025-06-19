@@ -21,8 +21,14 @@ const scrollingImages = [
   { title: "Air Rifle Range", image: "/images/amenities/AirRifle.jpg" },
   { title: "Lounge Area", image: "/images/amenities/Lounge.jpg" },
   { title: "Pool Side View", image: "/images/amenities/LoungeSwim.jpg" },
-  { title: "Lawn Tennis", image: "/images/amenities/lawn.jpg" },
-  { title: "Recreation Area", image: "/images/amenities/PoolTable.jpg" },
+  {
+    title: "Snooker",
+    image: "/images/amenities/snooker.JPG",
+  },
+  {
+    title: "Table Tennis",
+    image: "/images/amenities/TableTennis.JPG",
+  }, { title: "Recreation Area", image: "/images/amenities/PoolTable.jpg" },
   { title: "Badminton Arena", image: "/images/amenities/Badminton2.jpg" },
   { title: "Garden View", image: "/images/amenities/lawn2.jpg" },
 ];
@@ -41,24 +47,24 @@ const amenities = [
     image: "/images/amenities/squash.jpg",
   },
   {
-    title: "Family Fun Zones",
-    image: "/images/amenities/PlayArea1.JPG",
+    title: "Badminton Court",
+    image: "/images/amenities/Badminton.JPG",
   },
   {
     title: "Semi-Olympic Pool",
     image: "/images/amenities/SwimmingPool2.jpg",
   },
   {
-    title: "Fine Dining",
+    title: "Children's Play Area",
     image: "/images/amenities/PlayArea.JPG",
   },
   {
-    title: "Exclusive Events",
-    image: "/images/amenities/PoolTable.jpg",
+    title: "Lounge & Swim",
+    image: "/images/amenities/LoungeSwim.JPG",
   },
   {
-    title: "Concierge Service",
-    image: "/images/amenities/Lounge.jpg",
+    title: "Restaurant",
+    image: "/images/amenities/Restaurant.JPG",
   },
 ];
 
