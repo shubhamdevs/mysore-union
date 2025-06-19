@@ -68,7 +68,7 @@ const Hero = () => {
             </div>
           )} */}
 
-          {/* {isMobile ? (
+          {isMobile ? (
             <video
               key="mobile-video"
               src="/videos/mob-hero-background.mp4"
@@ -92,7 +92,7 @@ const Hero = () => {
               className={`object-cover w-full h-full border-none transition-opacity duration-700 opacity-100`}
               poster="/images/amenities/PlayArea.JPG" // Fallback image while video loads
             />
-          )} */}
+          )}
 
           {/* Blackish overlay for better text visibility */}
           <div className="absolute inset-0 bg-black/70 z-10"></div>
