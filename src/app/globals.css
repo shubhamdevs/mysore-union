@@ -388,6 +388,89 @@ textarea:focus {
   box-shadow: 0 0 0 2px var(--color-gold-light);
 }
 
+/* Date and Time Input Styling */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--color-gray-dark);
+  color: var(--color-gold);
+  border: 1.5px solid #333;
+  border-radius: var(--radius-input);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-inner-spin-button,
+input[type="datetime-local"]::-webkit-inner-spin-button,
+input[type="month"]::-webkit-inner-spin-button,
+input[type="week"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px var(--color-gold-light);
+}
+
+/* Custom styling for date and time inputs */
+input[type="date"],
+input[type="time"] {
+  min-width: 130px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+/* Ensure the picker icons are visible */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+/* Ensure proper coloring on mobile devices */
+input[type="date"],
+input[type="time"] {
+  color-scheme: dark;
+}
+
+/* Hide default placeholder text in webkit browsers */
+input[type="date"]::-webkit-datetime-edit {
+  color: transparent;
+}
+
+input[type="date"]:focus::-webkit-datetime-edit,
+input[type="date"]:valid::-webkit-datetime-edit {
+  color: white;
+}
+
+input[type="time"]::-webkit-datetime-edit {
+  color: transparent;
+}
+
+input[type="time"]:focus::-webkit-datetime-edit,
+input[type="time"]:valid::-webkit-datetime-edit {
+  color: white;
+}
+
 /* Host Grotesk font-face setup */
 @font-face {
   font-family: 'Host Grotesk';
@@ -699,7 +782,6 @@ footer .social-icon:hover {
   width: 100%;
 }
 
-
 /* Menu Layout Enhancement */
 .global-menu-container {
   height: 100%;
@@ -744,4 +826,49 @@ footer .social-icon:hover {
 
 .menu-section button:active {
   transform: translateX(8px) scale(0.98);
+}
+
+/* Custom styling for date and time inputs */
+input[type="date"],
+input[type="time"] {
+  min-width: 130px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+/* Ensure the picker icons are visible */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px;
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+/* Ensure proper coloring on mobile devices */
+input[type="date"],
+input[type="time"] {
+  color-scheme: dark;
+}
+
+/* Hide default placeholder text in webkit browsers */
+input[type="date"]::-webkit-datetime-edit {
+  color: transparent;
+}
+
+input[type="date"]:focus::-webkit-datetime-edit,
+input[type="date"]:valid::-webkit-datetime-edit {
+  color: white;
+}
+
+input[type="time"]::-webkit-datetime-edit {
+  color: transparent;
+}
+
+input[type="time"]:focus::-webkit-datetime-edit,
+input[type="time"]:valid::-webkit-datetime-edit {
+  color: white;
 }

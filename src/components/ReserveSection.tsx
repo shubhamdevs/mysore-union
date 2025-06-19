@@ -19,6 +19,19 @@ const experiences = [
 const ReserveSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("Dining");
   const [carouselIdx, setCarouselIdx] = useState(0);
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [guests, setGuests] = useState('');
+  const [selectedAmenity, setSelectedAmenity] = useState('');
+
+  // Reset form function
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setDate('');
+    setTime('');
+    setGuests('');
+    setSelectedAmenity('');
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +53,7 @@ const ReserveSection: React.FC = () => {
       </motion.div>
 
       {/* Container */}
-      <div id="reserve" className="w-[90%] md:w-full bg-[#181818] rounded-3xl shadow-2xl border border-[#232323] flex flex-col md:flex-row gap-8 md:gap-12 items-stretch p-6 sm:p-8 md:p-12 lg:p-16">
+      <div id="reserve" className="w-[95%] sm:w-[90%] md:w-full bg-[#181818] rounded-3xl shadow-2xl border border-[#232323] flex flex-col md:flex-row gap-8 md:gap-12 items-stretch p-5 sm:p-8 md:p-12 lg:p-16">
         {/* Form (2/3) */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -56,7 +69,7 @@ const ReserveSection: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`luxury-button px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-base sm:text-lg md:text-xl font-light transition-colors tracking-wide ${activeTab === tab ? 'bg-white text-black' : 'bg-[#232323] text-white hover:bg-[#333]'}`}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => handleTabChange(tab)}
               >
                 {tab}
               </motion.button>
@@ -68,17 +81,51 @@ const ReserveSection: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
               className="flex flex-col gap-4 sm:gap-6 md:gap-8 items-stretch"
-            >
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
-                <input type="date" className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />
-                <input type="time" className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />
+            >              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+                <div className="flex-1 relative">
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
+                    style={{ colorScheme: 'dark' }}
+                  />
+                  {/* {!date && (
+                    <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
+                      dd-mm-yyyy
+                    </div>
+                  )} */}
+                </div>
+                <div className="flex-1 relative">
+                  <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
+                    style={{ colorScheme: 'dark' }}
+                  />
+                  {/* {!time && (
+                    <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
+                      --:--
+                    </div>
+                  )} */}
+                </div>
               </div>
-              <input type="number" min="1" max="20" placeholder="Number of Guests" className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />
-              <motion.button
+              <input type="number" min="1" max="20" placeholder="Number of Guests" value={guests} onChange={(e) => setGuests(e.target.value)} className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="luxury-button w-full bg-white text-black font-light py-3 sm:py-4 shadow-lg hover:bg-gray-100 transition-colors text-base sm:text-lg md:text-xl rounded-lg"
+                disabled={!date || !time || !guests}
+                className={`luxury-button w-full font-light py-3 sm:py-4 shadow-lg transition-colors text-base sm:text-lg md:text-xl rounded-lg ${!date || !time || !guests ? 'bg-gray-400 text-gray-700 cursor-not-allowed' : 'bg-white text-black hover:bg-gray-100'}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (date && time && guests) {
+                    alert(`Dining reservation for ${guests} guests on ${date} at ${time} has been submitted.`);
+                    setDate('');
+                    setTime('');
+                    setGuests('');
+                  }
+                }}
               >
                 Reserve Dining
               </motion.button>
@@ -90,13 +137,38 @@ const ReserveSection: React.FC = () => {
               transition={{ duration: 0.4 }}
               className="flex flex-col gap-4 sm:gap-6 md:gap-8 items-stretch"
             >
-              <select className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg">
+              <select value={selectedAmenity} onChange={(e) => setSelectedAmenity(e.target.value)} className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg">
                 <option value="">Select Amenity</option>
                 {amenities.map(a => <option key={a} value={a}>{a}</option>)}
-              </select>
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
-                <input type="date" className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />
-                <input type="time" className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />
+              </select>              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
+                <div className="flex-1 relative">
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
+                    style={{ colorScheme: 'dark' }}
+                  />
+                  {/* {!date && (
+                    <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
+                      dd-mm-yyyy
+                    </div>
+                  )} */}
+                </div>
+                <div className="flex-1 relative">
+                  <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
+                    style={{ colorScheme: 'dark' }}
+                  />
+                  {/* {!time && (
+                    <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
+                      --:--
+                    </div>
+                  )} */}
+                </div>
               </div>
               <motion.button whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -157,4 +229,4 @@ const ReserveSection: React.FC = () => {
   );
 };
 
-export default ReserveSection; 
+export default ReserveSection;
