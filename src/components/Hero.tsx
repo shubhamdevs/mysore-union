@@ -38,7 +38,7 @@ const Hero = () => {
         transition={{ duration: 0.6 }}
         className="absolute top-0 left-0 w-full flex justify-center md:justify-between items-start px-4 sm:px-6 pt-4 sm:pt-6 z-20"
       >
-        <h1 className="text-white text-5xl sm:text-6xl md:text-8xl mt-[4rem] md:mt-0 font-normal leading-none select-none">Mysore Union</h1>
+        <h1 className="text-white text-5xl sm:text-8xl md:text-8xl mt-[4rem] md:mt-0 font-normal leading-none select-none">Mysore Union</h1>
         {
           !isMobile && (
             <motion.a
@@ -109,7 +109,7 @@ const Hero = () => {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="text-center"
                 >
-                  <span className="text-white text-2xl font-light leading-tight">
+                  <span className="text-white text-3xl font-light leading-tight">
                     Closer to Nature—Closer to Yourself
                   </span>
                 </motion.div>
@@ -120,7 +120,7 @@ const Hero = () => {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="text-center max-w-xs"
                 >
-                  <span className="text-white text-sm opacity-80 font-light">
+                  <span className="text-white text-lg opacity-80 font-light">
                     Spend unforgettable and remarkable time in the Mysore Union club—luxury, nature, and you.
                   </span>
                 </motion.div>
