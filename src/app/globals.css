@@ -470,13 +470,76 @@ body {
   word-break: break-word;
 }
 
+/* Enhanced rules for video elements */
 video,
 video * {
   border: none !important;
   border-radius: 0 !important;
   outline: none !important;
+  max-width: 100%;
+  height: 100%;
 }
 
+/* Mobile video specific styles */
+@media (max-width: 768px) {
+  video {
+    object-fit: cover !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Ensure video posters work on mobile */
+  video[poster] {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Responsive fixes for buttons */
+@media (max-width: 640px) {
+
+  .luxury-button,
+  .premium-button,
+  .btn {
+    padding: 0.4rem 1rem !important;
+    font-size: 0.85rem !important;
+    border-width: 1.5px !important;
+    min-height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Specific fix for menu buttons at the bottom of the page */
+  .fixed.bottom-8 {
+    bottom: 1.5rem !important;
+    width: auto !important;
+    max-width: 95% !important;
+    margin: 0 auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+  }
+
+  .fixed.bottom-8 .luxury-button {
+    flex: 1 !important;
+    min-width: 100px !important;
+  }
+}
+
+/* Ultra small mobile screens */
+@media (max-width: 360px) {
+
+  .luxury-button,
+  .premium-button,
+  .btn {
+    padding: 0.3rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    min-height: 36px !important;
+  }
+}
 
 * {
   box-sizing: border-box;

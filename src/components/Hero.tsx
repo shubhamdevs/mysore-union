@@ -8,12 +8,27 @@ import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+    // Enhanced mobile detection (including tablets)
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      console.log("Device is mobile:", mobile);
+    };
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Handle video loading
+  const handleVideoLoaded = () => {
+    setVideoLoaded(true);
+    console.log("Video loaded successfully");
+  };
+
   return (
     <div className="md:min-h-screen relative">
       {/* Top Bar */}
@@ -21,9 +36,9 @@ const Hero = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="absolute top-0 left-0 w-full flex justify-center md:justify-between  items-start px-4 sm:px-6 pt-4 sm:pt-6 z-20"
+        className="absolute top-0 left-0 w-full flex justify-center md:justify-between items-start px-4 sm:px-6 pt-4 sm:pt-6 z-20"
       >
-        <h1 className="text-white text-6xl  md:text-8xl mt-[4rem] md:mt-0 font-normal leading-none select-none">Mysore Union</h1>
+        <h1 className="text-white text-5xl sm:text-6xl md:text-8xl mt-[4rem] md:mt-0 font-normal leading-none select-none">Mysore Union</h1>
         {
           !isMobile && (
             <motion.a
@@ -42,16 +57,36 @@ const Hero = () => {
       {/* Video background with overlay */}
       <div className="w-full h-screen">
         <div className="relative w-full h-full overflow-hidden">
-          {
-            isMobile ? (
-              <video src="/videos/mob-hero-background.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full border-none" />
-            ) : (
-              <video src="/videos/hero_background.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full border-none" />
-            )
-          }
+          {isMobile ? (
+            <video
+              key="mobile-video"
+              src="/videos/mob-hero-background.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              onLoadedData={handleVideoLoaded}
+              className="object-cover w-full h-full border-none"
+              poster="/images/amenities/PlayArea1.JPG" // Fallback image while video loads
+            />
+          ) : (
+            <video
+              key="desktop-video"
+              src="/videos/hero_background.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              onLoadedData={handleVideoLoaded}
+              className="object-cover w-full h-full border-none"
+              poster="/images/amenities/PlayArea1.JPG" // Fallback image while video loads
+            />
+          )}
 
           {/* Blackish overlay for better text visibility */}
-          <div className="absolute inset-0 bg-black/70 z-10"></div>          <div className="absolute inset-0 z-20">
+          <div className="absolute inset-0 bg-black/70 z-10"></div>
+
+          <div className="absolute inset-0 z-20">
             {/* The content here will be visible on top of the background */}
             {/* Bottom Tagline & Description - responsive for all devices */}
             {/* For mobile devices - centered layout */}
@@ -115,4 +150,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

@@ -67,30 +67,41 @@ const GlobalMenu: React.FC = () => {
     }, 200);
   };
 
-  // Replace MUI with custom isMobile logic
+  // Enhanced mobile detection
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallMobile, setIsSmallMobile] = useState(false);
+
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const checkDeviceSize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsSmallMobile(width <= 400);
+    };
+
+    checkDeviceSize();
+    window.addEventListener('resize', checkDeviceSize);
+    return () => window.removeEventListener('resize', checkDeviceSize);
   }, []);
 
   return (
     <>
-      {/* Floating menu and reserve buttons */}
+      {/* Floating menu and reserve buttons - improved for mobile */}
       <div
         ref={menuBtnRef}
-        className={`fixed sm:left-1/2  -translate-x-1/2 bottom-8 z-[100] flex gap-2 sm:gap-4 transition-opacity ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
-        style={{ left: '50%', transform: 'translateX(-50%)' }}
+        className={`fixed bottom-8 z-[100] flex gap-2 transition-all duration-300 ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        style={{
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: isSmallMobile ? '90%' : 'auto'
+        }}
       >
         <button
-          className="luxury-button px-2 sm:px-2 lg:px-8 py-2 flex items-center gap-1 sm:gap-3 shadow-lg text-[5px] sm:text-sm  lg:text-lg font-medium min-h-[40px] sm:min-h-[48px]"
+          className="luxury-button px-3 py-2 flex items-center justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px]"
           style={{ fontFamily: "Host Grotesk, sans-serif" }}
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
-          <span className="inline-block w-5 sm:w-6 h-5 sm:h-6">
+          <span className="inline-block w-4 sm:w-5 h-4 sm:h-5">
             {/* Hamburger icon */}
             <svg
               viewBox="0 0 24 24"
@@ -99,26 +110,29 @@ const GlobalMenu: React.FC = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-4 sm:w-6 h-4 sm:h-6"
+              className="w-4 sm:w-5 h-4 sm:h-5"
             >
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </span>
-          <span className="font-semibold text-[10px] sm:text-lg"> Menu </span>
+          <span className="font-semibold text-xs sm:text-lg"> Menu </span>
         </button>
+
         {isMobile && (
           <button
-            className="luxury-button px-[2px] sm:px-6 py-2 flex items-center justify-between  sm:gap-3 shadow-lg  font-medium min-h-[40px] sm:min-h-[48px]"
+            className="luxury-button px-3 py-2 flex items-center justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px]"
             style={{ fontFamily: "Host Grotesk, sans-serif" }}
             onClick={() => handleSectionClick('reserve')}
-            aria-label="Reserve"          >
-            <span className="font-semibold text-[10px]  sm:text-sm md:text-lg">Reserve</span>
-            <span className="inline-block ml-1 text-lg sm:text-xl">↗</span>
+            aria-label="Reserve"
+          >
+            <span className="font-semibold text-xs sm:text-lg">Reserve</span>
+            <span className="inline-block ml-1 text-sm sm:text-xl">↗</span>
           </button>
         )}
       </div>
+
       {/* Overlay menu */}
       <AnimatePresence>
         {open && (
@@ -137,8 +151,8 @@ const GlobalMenu: React.FC = () => {
               transition={{ duration: 0.2, type: 'spring', stiffness: 300, damping: 30 }}
             >
               {/* Left section: menu links and socials */}
-              <div className="flex-1 flex flex-col justify-center items-center  space-y-6    border-2 border-white border-solid">
-                <div className=" flex flex-col justify-between    md:p-20     border-2 border-white border-solid">
+              <div className="flex-1 flex flex-col justify-center items-center  space-y-6    ">
+                <div className=" flex flex-col justify-between    md:p-20    ">
                   <ul className="space-y-12 md:space-y-8 mt-0 md:mt-4">
                     {sections.map((section) => (
                       <li key={section.id}>
