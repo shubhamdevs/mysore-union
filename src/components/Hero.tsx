@@ -57,6 +57,17 @@ const Hero = () => {
       {/* Video background with overlay */}
       <div className="w-full h-screen">
         <div className="relative w-full h-full overflow-hidden">
+          {/* Show loading indicator if video hasn't loaded yet */}
+          {!videoLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center z-10 bg-black">
+              <div className="animate-pulse flex space-x-4">
+                <div className="h-3 w-3 bg-white rounded-full"></div>
+                <div className="h-3 w-3 bg-white rounded-full"></div>
+                <div className="h-3 w-3 bg-white rounded-full"></div>
+              </div>
+            </div>
+          )}
+
           {isMobile ? (
             <video
               key="mobile-video"
@@ -66,7 +77,7 @@ const Hero = () => {
               muted
               playsInline
               onLoadedData={handleVideoLoaded}
-              className="object-cover w-full h-full border-none"
+              className={`object-cover w-full h-full border-none transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
               poster="/images/amenities/PlayArea1.JPG" // Fallback image while video loads
             />
           ) : (
@@ -78,7 +89,7 @@ const Hero = () => {
               muted
               playsInline
               onLoadedData={handleVideoLoaded}
-              className="object-cover w-full h-full border-none"
+              className={`object-cover w-full h-full border-none transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
               poster="/images/amenities/PlayArea1.JPG" // Fallback image while video loads
             />
           )}
