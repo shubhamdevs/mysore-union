@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  // const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     // Enhanced mobile detection (including tablets)
@@ -24,10 +24,10 @@ const Hero = () => {
   }, []);
 
   // Handle video loading
-  const handleVideoLoaded = () => {
-    setVideoLoaded(true);
-    console.log("Video loaded successfully");
-  };
+  // const handleVideoLoaded = () => {
+  //   setVideoLoaded(true);
+  //   console.log("Video loaded successfully");
+  // };
 
   return (
     <div className="md:min-h-screen relative">
@@ -58,7 +58,7 @@ const Hero = () => {
       <div className="w-full h-screen">
         <div className="relative w-full h-full overflow-hidden">
           {/* Show loading indicator if video hasn't loaded yet */}
-          {!videoLoaded && (
+          {/* {!videoLoaded && (
             <div className="absolute inset-0 flex items-center justify-center z-10 bg-black">
               <div className="animate-pulse flex space-x-4">
                 <div className="h-3 w-3 bg-white rounded-full"></div>
@@ -66,9 +66,9 @@ const Hero = () => {
                 <div className="h-3 w-3 bg-white rounded-full"></div>
               </div>
             </div>
-          )}
+          )} */}
 
-          {isMobile ? (
+          {/* {isMobile ? (
             <video
               key="mobile-video"
               src="/videos/mob-hero-background.mp4"
@@ -76,8 +76,8 @@ const Hero = () => {
               loop
               muted
               playsInline
-              onLoadedData={handleVideoLoaded}
-              className={`object-cover w-full h-full border-none transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+              // onLoadedData={handleVideoLoaded}
+              className={`object-cover w-full h-full border-none transition-opacity duration-700 opacity-100`}
               poster="/images/amenities/PlayArea1.JPG" // Fallback image while video loads
             />
           ) : (
@@ -88,11 +88,11 @@ const Hero = () => {
               loop
               muted
               playsInline
-              onLoadedData={handleVideoLoaded}
-              className={`object-cover w-full h-full border-none transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+              // onLoadedData={handleVideoLoaded}
+              className={`object-cover w-full h-full border-none transition-opacity duration-700 opacity-100`}
               poster="/images/amenities/PlayArea1.JPG" // Fallback image while video loads
             />
-          )}
+          )} */}
 
           {/* Blackish overlay for better text visibility */}
           <div className="absolute inset-0 bg-black/70 z-10"></div>

@@ -391,7 +391,7 @@ textarea:focus {
 /* Host Grotesk font-face setup */
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/Host Grotesk/HostGrotesk-VariableFont_wght.ttf') format('truetype');
+  src: url('/fonts/Host Grotesk/HostGrotesk-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -399,7 +399,7 @@ textarea:focus {
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/Host Grotesk/HostGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('/fonts/Host Grotesk/HostGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
@@ -410,7 +410,13 @@ textarea:focus {
 }
 
 .font-host-grotesk {
-  font-family: 'Host Grotesk', Arial, sans-serif !important;
+  font-family: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Font fallbacks */
+:root {
+  --font-heading: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Montserrat', Arial, sans-serif;
 }
 
 /* Responsive Typography & Spacing */
@@ -588,4 +594,154 @@ video * {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Enhanced Social Icons Styling */
+.social-icon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-icon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.8);
+}
+
+.social-icon:hover:before {
+  opacity: 0.15;
+  transform: scale(1);
+}
+
+.social-icon:active {
+  transform: scale(0.95);
+}
+
+/* Brand-specific styling - optional enhancement */
+.social-icon[title="Instagram"]:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 0.9;
+}
+
+.social-icon[title="Facebook"]:hover {
+  background-color: rgba(24, 119, 242, 0.2);
+}
+
+.social-icon[title="LinkedIn"]:hover {
+  background-color: rgba(0, 119, 181, 0.2);
+}
+
+.social-icon[title="Gmail"]:hover {
+  background-color: rgba(234, 67, 53, 0.2);
+}
+
+.social-icon[title="X"]:hover {
+  background-color: rgba(29, 161, 242, 0.2);
+}
+
+/* Footer specific social icons styling */
+footer .social-icon {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer .social-icon:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 6rem;
+    /* Extra padding to account for the fixed bottom menu */
+  }
+
+  footer .social-icons-container {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Enhanced Menu Animation */
+.menu-item {
+  position: relative;
+  overflow: hidden;
+  padding-left: 0;
+  transition: padding-left 0.3s ease, color 0.3s ease;
+}
+
+.menu-item:hover {
+  padding-left: 10px;
+}
+
+.menu-item:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover:after {
+  width: 100%;
+}
+
+
+/* Menu Layout Enhancement */
+.global-menu-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-section {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 350px;
+}
+
+@media (max-width: 768px) {
+  .global-menu-container {
+    justify-content: center;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+  }
+
+  .menu-section {
+    margin-bottom: 2rem;
+    max-width: 50%;
+  }
+
+  .social-icons-container {
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Enhanced transition for menu items */
+.menu-section button {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.menu-section button:hover {
+  color: white;
+  transform: translateX(8px);
+}
+
+.menu-section button:active {
+  transform: translateX(8px) scale(0.98);
 }

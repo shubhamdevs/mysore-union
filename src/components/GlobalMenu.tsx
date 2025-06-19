@@ -3,6 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { SiGmail } from "react-icons/si";
 
 import Image from "next/image";
 
@@ -13,9 +16,38 @@ const sections = [
   { name: "FAQ", id: "faq" },
 ];
 
+// Added brand colors for social icons
 const socials = [
-  { name: "Instagram", icon: <IoLogoInstagram className="w-5 h-5 sm:w-8 sm:h-8" />, url: "#" },
-  { name: "LinkedIn", icon: <FaLinkedinIn className="w-5 h-5 sm:w-8 sm:h-8" />, url: "#" },
+  {
+    name: "Instagram",
+    icon: <IoLogoInstagram className="w-5 h-5 sm:w-6 sm:h-6" />,
+    url: "#",
+    color: "#E1306C"
+  },
+  {
+    name: "LinkedIn",
+    icon: <FaLinkedinIn className="w-5 h-5 sm:w-6 sm:h-6" />,
+    url: "#",
+    color: "#0077B5"
+  },
+  {
+    name: "Gmail",
+    icon: <SiGmail className="w-5 h-5 sm:w-6 sm:h-6" />,
+    url: "#",
+    color: "#EA4335"
+  },
+  {
+    name: "Facebook",
+    icon: <FaFacebookF className="w-5 h-5 sm:w-6 sm:h-6" />,
+    url: "#",
+    color: "#1877F2"
+  },
+  {
+    name: "X",
+    icon: <FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6" />,
+    url: "#",
+    color: "#000000"
+  },
 ];
 
 const GlobalMenu: React.FC = () => {
@@ -151,83 +183,72 @@ const GlobalMenu: React.FC = () => {
               transition={{ duration: 0.2, type: 'spring', stiffness: 300, damping: 30 }}
             >
               {/* Left section: menu links and socials */}
-              <div className="flex-1 flex flex-col justify-center items-center  space-y-6    ">
-                <div className=" flex flex-col justify-between    md:p-20    ">
-                  <ul className="space-y-12 md:space-y-8 mt-0 md:mt-4">
+              <div className="flex-1 flex flex-col justify-evenly items-center pt-16 pb-8 px-6 md:px-12 lg:px-20 global-menu-container  ">
+                {/* Navigation Menu Section */}
+                <div className="w-full max-w-md menu-section">
+                  <ul className="space-y-8 md:space-y-10 w-full ">
                     {sections.map((section) => (
                       <li key={section.id}>
-                        <button
-                          className="text-3xl sm:text-4xl hover:scale-105 transition-all tap:scale-95 md:text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white"
-                          style={{
-                            fontFamily: 'Host Grotesk, sans-serif',
-                            textAlign: 'left',
-                          }}
+                        <motion.button
+                          className="text-3xl sm:text-4xl  md:text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white w-full text-center menu-item"
+                          style={{ fontFamily: 'Host Grotesk, sans-serif' }}
                           onClick={() => handleSectionClick(section.id)}
+                          whileHover={{ scale: 1.05, x: 10 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
                           {section.name}
-                        </button>
+                        </motion.button>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Mobile Carousel */}
-                {/* <div className="lg:hidden w-full px-4 mt-8 mb-6">
-                  <div className="relative w-full h-[200px] sm:h-[240px]">
-                    {experiences.map((exp, i) => (
-                      <motion.div
-                        key={exp.title}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{
-                          opacity: i === carouselIdx ? 1 : 0,
-                          scale: i === carouselIdx ? 1 : 0.95,
-                          zIndex: i === carouselIdx ? 20 : 10
-                        }}
-                        transition={{ duration: 0.5 }}
-                        className="absolute left-0 top-0 w-full h-full"
-                        style={{
-                          boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)',
-                          borderRadius: '1rem',
-                          background: '#232323',
-                          border: '1.5px solid #333',
-                        }}
-                      >
-                        <Image
-                          src={exp.img}
-                          alt={exp.title}
-                          fill
-                          sizes="100vw"
-                          className="object-cover rounded-t-[1rem]"
-                          priority={i === 0}
-                        />
-                        <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/80 to-transparent">
-                          <h3 className="text-white text-base sm:text-lg font-medium">{exp.title}</h3>
-                          <p className="text-white/80 text-xs sm:text-sm mt-1">{exp.desc}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div> */}
-
-                {/* Socials and copyright */}
-                <div className="flex flex-col gap-4 mb-4">
-                  <div className="flex gap-4">
+                {/* Socials Section */}
+                <div className="mt-8 md:mt-12 social-icons-container ">
+                  <div className="flex flex-wrap justify-center gap-4 md:gap-5">
                     {socials.map((s) => (
-                      <a
+                      <motion.a
                         key={s.name}
                         href={s.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center rounded-full border border-[#232323] hover:bg-[#232323] text-white transition-colors"
+                        className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full border border-white/50 text-white overflow-hidden group social-icon"
+                        whileHover={{
+                          scale: 1.1,
+                          borderColor: s.color,
+                          backgroundColor: `${s.color}20`, // 20% opacity of the brand color
+                          boxShadow: `0 0 10px 2px ${s.color}30` // Add a subtle glow in brand color
+                        }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                        aria-label={`Visit our ${s.name}`}
+                        title={s.name}
                       >
-                        {s.icon}
-                      </a>
+                        {/* Hover background effect */}
+                        <span
+                          className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+                          style={{ backgroundColor: s.color }}
+                        ></span>
+
+                        {/* Icon */}
+                        <motion.span
+                          className="relative z-10 transition-all duration-300"
+                          whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          {s.icon}
+                        </motion.span>
+                      </motion.a>
                     ))}
                   </div>
+                  <p className="text-white/50 text-xs mt-4 text-center">Connect with us on social media</p>
                 </div>
-              </div>{/* Right section: image carousel, only on large screens */}
+              </div>
+
+              {/* Right section: image carousel, only on large screens */}
               <div className="hidden lg:flex flex-1 items-center justify-center p-8">
-                <div className="relative w-full h-[400px] max-w-[500px]">
+                <div className="relative w-full h-[350px] max-w-[400px]">
                   {experiences.map((exp, i) => (
                     <motion.div
                       key={exp.title}
@@ -291,31 +312,6 @@ const GlobalMenu: React.FC = () => {
               </div>
 
 
-
-              {/* Close button for small screens, top right */}
-              <button
-                className="absolute top-6 right-6 luxury-button px-4 py-2 flex items-center gap-2 shadow text-base font-medium z-20 lg:hidden"
-                style={{ fontFamily: 'Host Grotesk, sans-serif' }}
-                onClick={() => setOpen(false)}
-                aria-label="Close menu"
-              >
-                <span className="inline-block w-5 h-5">
-                  {/* X icon */}
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </span>
-                <span className="font-semibold">Close</span>
-              </button>
             </motion.div>
           </motion.div>
         )}
