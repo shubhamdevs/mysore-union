@@ -52,8 +52,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
         fontFamily: 'Host Grotesk, sans-serif',
       }}
     >
-      {/* Animated bar background */}
-      <motion.div
+      {/* Animated bar background */}      <motion.div
         initial={{
           position: 'absolute',
           left: 0,
@@ -63,11 +62,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
           background: '#F6F4EA',
           borderRadius: 60,
           scaleX: 0,
-          originX: 0,
         }}
         animate={barControls}
         style={{
           zIndex: 1,
+          transformOrigin: 'left',
         }}
       />
       {/* Text stays above the bar */}

@@ -5,14 +5,15 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const gymImages = [
-  { src: '/images/amenities/gym1.jpg', title: 'Modern Fitness Equipment' },
-  { src: '/images/amenities/gym2.jpg', title: 'Cardio Training Zone' },
-  { src: '/images/amenities/gym3.jpg', title: 'Weight Training Area' },
-  { src: '/images/amenities/gym4.jpg', title: 'Personal Training Space' },
-  { src: '/images/amenities/gym5.jpg', title: 'Advanced Workout Machines' },
-  { src: '/images/amenities/gym6.jpg', title: 'Fitness Studio' }
-]
+// Gym image data for potential future use
+// const gymImages = [
+//   { src: '/images/amenities/gym1.jpg', title: 'Modern Fitness Equipment' },
+//   { src: '/images/amenities/gym2.jpg', title: 'Cardio Training Zone' },
+//   { src: '/images/amenities/gym3.jpg', title: 'Weight Training Area' },
+//   { src: '/images/amenities/gym4.jpg', title: 'Personal Training Space' },
+//   { src: '/images/amenities/gym5.jpg', title: 'Advanced Workout Machines' },
+//   { src: '/images/amenities/gym6.jpg', title: 'Fitness Studio' }
+// ]
 
 // Scrolling row images
 const scrollingImages = [
@@ -71,17 +72,16 @@ const gridVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.95, y: 40 },
-  show: {
+  hidden: { opacity: 0, scale: 0.95, y: 40 }, show: {
     opacity: 1,
     scale: 1,
     y: 0,
     transition: {
       duration: 0.7,
-      ease: "easeOut" as any // Type assertion to avoid TypeScript error
+      ease: "easeOut"
     }
   },
-};
+} as const;
 
 const gridAreas = [
   // visually editorial, not a strict grid

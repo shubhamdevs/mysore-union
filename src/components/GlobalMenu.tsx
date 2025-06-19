@@ -33,14 +33,13 @@ const GlobalMenu: React.FC = () => {
     { title: "Badminton Arena", desc: "Multiple courts for tournaments", img: '/images/amenities/Badminton.jpg' },
   ];
   const [carouselIdx, setCarouselIdx] = useState(0);
-
   useEffect(() => {
     if (!open) return;
     const interval = setInterval(() => {
       setCarouselIdx((prev) => (prev + 1) % experiences.length);
     }, 3500);
     return () => clearInterval(interval);
-  }, [open]);
+  }, [open, experiences.length]);
 
   // Hide menu button when footer is in view
   useEffect(() => {

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from "next/image";
+// Image is not currently used but may be needed for future enhancements
+// import Image from "next/image";
 import { useEffect, useState } from 'react';
 
 const Hero = () => {

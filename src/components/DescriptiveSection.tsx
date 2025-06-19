@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { TextReveal } from "../components/magicui/text-reveal";
+// TextReveal is currently not used but might be needed for future enhancements
+// import { TextReveal } from "../components/magicui/text-reveal";
 
 const description = `It All Begins Here -  where luxury meets tradition in a sanctuary of modern amenities. Discover exquisite nature, wellness, and recreation—experience state-of-the-art lifestyle amenities and family fun zones. Mysore Union is your go-to destination for unforgettable moments, premium community, and 360° growth.`;
 
