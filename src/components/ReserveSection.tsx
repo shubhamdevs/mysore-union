@@ -24,6 +24,24 @@ const ReserveSection: React.FC = () => {
   const [guests, setGuests] = useState('');
   const [selectedAmenity, setSelectedAmenity] = useState('');
 
+  const [isMobile, setIsMobile] = useState(false);
+  // const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    // Enhanced mobile detection (including tablets)
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      console.log("Device is mobile:", mobile);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+
+
   // Reset form function
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -88,10 +106,10 @@ const ReserveSection: React.FC = () => {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg "
-                    style={{ colorScheme: 'white' }}
+                    // style={{ colorScheme: 'white' }}
                     placeholder='dd-mm-yyyy'
                   />
-                  {/* {isM && (
+                  {/* {isMobile && (
                     <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
                       dd-mm-yyyy
                     </div>
@@ -103,17 +121,26 @@ const ReserveSection: React.FC = () => {
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg "
-                    style={{ colorScheme: 'white' }}
+                    // style={{ colorScheme: 'white' }}
                     placeholder='--:--'
                   />
-                  {/* {!time && (
+                  {/* {isMobile && (
                     <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
                       --:--
                     </div>
                   )} */}
                 </div>
               </div>
-              <input type="number" min="1" max="20" placeholder="Number of Guests" value={guests} onChange={(e) => setGuests(e.target.value)} className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg" />              <motion.button
+              <input type="number"
+                min="1"
+                max="20"
+                placeholder="Number of Guests"
+                value={guests}
+                onChange={(e) => setGuests(e.target.value)}
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg"
+              />
+
+              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
