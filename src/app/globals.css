@@ -389,7 +389,7 @@ textarea:focus {
 }
 
 /* Date and Time Input Styling */
-input[type="date"],
+/* input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"],
@@ -427,7 +427,7 @@ input[type="week"]:focus {
 }
 
 /* Custom styling for date and time inputs */
-input[type="date"],
+/* input[type="date"],
 input[type="time"] {
   min-width: 130px;
   appearance: none;
@@ -437,7 +437,7 @@ input[type="time"] {
 }
 
 /* Ensure the picker icons are visible */
-input[type="date"]::-webkit-calendar-picker-indicator,
+/* input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
@@ -446,14 +446,16 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   opacity: 0.7;
 }
 
+*/
+
 /* Ensure proper coloring on mobile devices */
-input[type="date"],
+/* input[type="date"],
 input[type="time"] {
   color-scheme: dark;
-}
+}  */
 
 /* Hide default placeholder text in webkit browsers */
-input[type="date"]::-webkit-datetime-edit {
+/* input[type="date"]::-webkit-datetime-edit {
   color: transparent;
 }
 
@@ -469,7 +471,8 @@ input[type="time"]::-webkit-datetime-edit {
 input[type="time"]:focus::-webkit-datetime-edit,
 input[type="time"]:valid::-webkit-datetime-edit {
   color: white;
-}
+} */
+
 
 /* Host Grotesk font-face setup */
 @font-face {
