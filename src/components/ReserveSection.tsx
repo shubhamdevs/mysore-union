@@ -149,7 +149,8 @@ const ReserveSection: React.FC = () => {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
-                    style={{ colorScheme: 'dark' }}
+                    style={{ colorScheme: 'white' }}
+                    placeholder='dd-mm-yyyy'
                   />
                   {/* {!date && (
                     <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
@@ -163,7 +164,8 @@ const ReserveSection: React.FC = () => {
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
-                    style={{ colorScheme: 'dark' }}
+                    style={{ colorScheme: 'white' }}
+                    placeholder='--:--'
                   />
                   {/* {!time && (
                     <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
