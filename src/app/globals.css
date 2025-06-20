@@ -447,15 +447,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /* Ensure proper coloring on mobile devices */
-/* input[type="date"],
+input[type="date"],
 input[type="time"] {
   color-scheme: dark;
-} */
+}
 
 /* Hide default placeholder text in webkit browsers */
-/* input[type="date"]::-webkit-datetime-edit {
+input[type="date"]::-webkit-datetime-edit {
   color: transparent;
-} */
+}
 
 input[type="date"]:focus::-webkit-datetime-edit,
 input[type="date"]:valid::-webkit-datetime-edit {
@@ -474,7 +474,7 @@ input[type="time"]:valid::-webkit-datetime-edit {
 /* Host Grotesk font-face setup */
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/Host Grotesk/HostGroteskwght-BF65bb091d8052b.ttf') format('truetype');
+  src: url('/fonts/Host Grotesk/HostGrotesk-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -482,7 +482,7 @@ input[type="time"]:valid::-webkit-datetime-edit {
 
 @font-face {
   font-family: 'Host Grotesk';
-  src: url('/fonts/Host Grotesk/HostGrotesk-Italicwght-BF65bb091d90feb.ttf') format('truetype');
+  src: url('/fonts/Host Grotesk/HostGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
