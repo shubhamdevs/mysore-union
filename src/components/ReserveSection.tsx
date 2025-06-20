@@ -24,21 +24,21 @@ const ReserveSection: React.FC = () => {
   const [guests, setGuests] = useState('');
   const [selectedAmenity, setSelectedAmenity] = useState('');
 
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
   // const [videoLoaded, setVideoLoaded] = useState(false);
 
-  useEffect(() => {
-    // Enhanced mobile detection (including tablets)
-    const checkMobile = () => {
-      const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
-      console.log("Device is mobile:", mobile);
-    };
+  // useEffect(() => {
+  //   // Enhanced mobile detection (including tablets)
+  //   const checkMobile = () => {
+  //     const mobile = window.innerWidth <= 768;
+  //     setIsMobile(mobile);
+  //     console.log("Device is mobile:", mobile);
+  //   };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  //   checkMobile();
+  //   window.addEventListener('resize', checkMobile);
+  //   return () => window.removeEventListener('resize', checkMobile);
+  // }, []);
 
 
 
