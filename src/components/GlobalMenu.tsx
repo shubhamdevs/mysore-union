@@ -128,7 +128,7 @@ const GlobalMenu: React.FC = () => {
         }}
       >
         <button
-          className="luxury-button px-3 py-2 flex items-center justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px]"
+          className="luxury-button px-3 py-2 flex items-center active:scale-95 hover:scale:102 justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px]"
           style={{ fontFamily: "Host Grotesk, sans-serif" }}
           onClick={() => setOpen(true)}
           aria-label="Open menu"

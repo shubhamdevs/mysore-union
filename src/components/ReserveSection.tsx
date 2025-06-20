@@ -47,7 +47,7 @@ const ReserveSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="w-full flex justify-center mb-12 sm:mb-0"
+        className="w-full flex justify-center mb-12 sm:mb-20"
       >
         <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[clamp(2.5rem,6vw,5rem)] font-normal text-center" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>RESERVE YOUR EXPERIENCE</h2>
       </motion.div>
@@ -88,7 +88,8 @@ const ReserveSection: React.FC = () => {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
-                    style={{ colorScheme: 'dark' }}
+                    style={{ colorScheme: 'white' }}
+                    placeholder='dd-mm-yyyy'
                   />
                   {/* {!date && (
                     <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
@@ -102,7 +103,8 @@ const ReserveSection: React.FC = () => {
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#232323] text-white border border-[#333] focus:outline-none focus:ring-2 focus:ring-white text-base sm:text-lg font-light rounded-lg appearance-none"
-                    style={{ colorScheme: 'dark' }}
+                    style={{ colorScheme: 'white' }}
+                    placeholder='--:--'
                   />
                   {/* {!time && (
                     <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-base sm:text-lg pointer-events-none">
