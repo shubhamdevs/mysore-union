@@ -65,7 +65,7 @@ const ReserveSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="w-full flex justify-center mb-12 sm:mb-20"
+        className="w-full flex justify-center mb-12 "
       >
         <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[clamp(2.5rem,6vw,5rem)] font-normal text-center mb-6" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>RESERVE YOUR EXPERIENCE</h2>
       </motion.div>

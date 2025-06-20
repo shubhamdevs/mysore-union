@@ -49,7 +49,6 @@ const socials = [
     color: "#000000"
   },
 ];
-
 const GlobalMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [hide, setHide] = useState(false);
@@ -120,11 +119,15 @@ const GlobalMenu: React.FC = () => {
       {/* Floating menu and reserve buttons - improved for mobile */}
       <div
         ref={menuBtnRef}
-        className={`fixed bottom-8 z-[100] flex gap-2 transition-all duration-300 ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        className={`fixed bottom-8 z-[100] flex gap-2   ${hide ? "opacity-0 pointer-events-none" : "opacity-100"}`}
         style={{
           left: '50%',
           transform: 'translateX(-50%)',
-          width: isSmallMobile ? '90%' : 'auto'
+          width: isSmallMobile ? '90%' : 'auto',
+          transitionBehavior: 'transform, opacity',
+          transitionDuration: '10s',
+          transitionTimingFunction: 'ease-in-out',
+          transitionDelay: '0s',
         }}
       >
         <button
