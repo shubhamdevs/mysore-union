@@ -558,7 +558,7 @@ video * {
 
 @media (max-width: 900px) {
 
-  .container,
+  
   .section-bg,
   main,
   section {
@@ -573,7 +573,6 @@ video * {
 
 @media (max-width: 600px) {
 
-  .container,
   .section-bg,
   main,
   section {

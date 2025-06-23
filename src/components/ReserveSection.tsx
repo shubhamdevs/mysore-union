@@ -53,7 +53,7 @@ const ReserveSection: React.FC = () => {
     <div className="min-h-screen ">
 
 
-      <div className="container mx-auto px-4 py-8 lg:py-16">
+      <div className=" mx-auto pl-4 pr-6 py-8 lg:py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-6 tracking-tight" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>
             RESERVE YOUR EXPERIENCE
@@ -74,25 +74,23 @@ const ReserveSection: React.FC = () => {
               viewport={{ once: true }}
               className="w-full "
             >
-              {              // bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10
-              }
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center  shadow-2xl overflow-hidden">
-                <div className="p-8 md:p-10">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10  shadow-2xl overflow-hidden">
+                <div className="w-full lg:w-1/2 p-8 md:p-10">
                   {/* Tab Navigation */}
                   <div className="flex space-x-2 mb-8">
                     <button
                       onClick={() => setActiveTab('dining')}
                       className={cn(
                         "px-8 py-3 rounded-full font-medium text-sm transition-all duration-300 ease-out",
-                        "border border-gray-600/50 relative overflow-hidden group",
+                        "border relative overflow-hidden group backdrop-blur-sm",
                         activeTab === 'dining'
-                          ? "bg-white text-black shadow-lg shadow-white/20 border-white/20"
-                          : "text-gray-300 hover:text-white hover:border-gray-500/70 hover:bg-gray-800/50"
+                          ? "bg-white/20 text-white border-white/30 shadow-lg shadow-white/10"
+                          : "text-gray-400 border-gray-600/30 hover:text-gray-200 hover:border-gray-500/50 hover:bg-white/10"
                       )}
                     >
                       <span className="relative z-10">Dining</span>
                       {activeTab === 'dining' && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white animate-pulse opacity-20" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 animate-pulse" />
                       )}
                     </button>
 
@@ -100,15 +98,15 @@ const ReserveSection: React.FC = () => {
                       onClick={() => setActiveTab('amenities')}
                       className={cn(
                         "px-8 py-3 rounded-full font-medium text-sm transition-all duration-300 ease-out",
-                        "border border-gray-600/50 relative overflow-hidden group",
+                        "border relative overflow-hidden group backdrop-blur-sm",
                         activeTab === 'amenities'
-                          ? "bg-white text-black shadow-lg shadow-white/20 border-white/20"
-                          : "text-gray-300 hover:text-white hover:border-gray-500/70 hover:bg-gray-800/50"
+                          ? "bg-white/20 text-white border-white/30 shadow-lg shadow-white/10"
+                          : "text-gray-400 border-gray-600/30 hover:text-gray-200 hover:border-gray-500/50 hover:bg-white/10"
                       )}
                     >
                       <span className="relative z-10">Amenities</span>
                       {activeTab === 'amenities' && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white animate-pulse opacity-20" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 animate-pulse" />
                       )}
                     </button>
                   </div>
@@ -174,7 +172,7 @@ const ReserveSection: React.FC = () => {
                     {/* Date and Time Row */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="relative group">
-                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 pointer-events-none">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
                           <Calendar className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                         </div>
                         <input
@@ -191,7 +189,7 @@ const ReserveSection: React.FC = () => {
                       </div>
 
                       <div className="relative group">
-                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 pointer-events-none">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
                           <Clock className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                         </div>
                         <input
@@ -211,7 +209,7 @@ const ReserveSection: React.FC = () => {
                     {/* Number of Guests - Only show in dining tab */}
                     {activeTab === 'dining' && (
                       <div className="relative group">
-                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 pointer-events-none">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
                           <Users className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                         </div>
                         <input
@@ -235,17 +233,21 @@ const ReserveSection: React.FC = () => {
                     <button
                       type="submit"
                       className={cn(
-                        "w-full mt-8 py-4 px-8 bg-white text-black font-semibold rounded-2xl",
-                        "hover:bg-gray-100 active:bg-gray-200 transition-all duration-200",
-                        "shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]",
-                        "focus:outline-none focus:ring-4 focus:ring-white/20",
+                        "w-full mt-8 py-4 px-8 font-semibold rounded-2xl",
+                        "bg-gradient-to-r from-white/15 via-white/20 to-white/15 text-white border border-white/20",
+                        "hover:from-white/20 hover:via-white/25 hover:to-white/20 hover:border-white/30",
+                        "active:from-white/25 active:via-white/30 active:to-white/25 active:border-white/40",
+                        "transition-all duration-300 backdrop-blur-sm",
+                        "shadow-lg hover:shadow-xl shadow-white/10 hover:shadow-white/20",
+                        "transform hover:scale-[1.02] active:scale-[0.98]",
+                        "focus:outline-none focus:ring-2 focus:ring-white/30",
                         "group relative overflow-hidden"
                       )}
                     >
                       <span className="relative z-10">
                         {activeTab === 'dining' ? 'Reserve Dining' : 'Reserve Amenity'}
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                     </button>
                   </form>
                 </div>
