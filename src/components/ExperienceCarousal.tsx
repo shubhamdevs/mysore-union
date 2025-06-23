@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Experience {
     title: string;
@@ -7,11 +8,11 @@ interface Experience {
     img: string;
 }
 
-const amenities = [
-    "Pool", "Yoga Studio", "Squash Court", "Fitness Center", "Fine Dining"
-];
+// const amenities = [
+//     "Pool", "Yoga Studio", "Squash Court", "Fitness Center", "Fine Dining"
+// ];
 
-const experiences = [
+const experiences: Experience[] = [
     { title: "Poolside Dining", desc: "Enjoy gourmet meals by the pool.", img: "/images/amenities/Restaurant.jpg" },
     { title: "Yoga Retreat", desc: "Find your zen in our serene studio.", img: "/images/amenities/SwimmingPool2.jpg" },
     { title: "Squash Challenge", desc: "Compete or play for fun.", img: "/images/amenities/squash.jpg" },
@@ -54,7 +55,7 @@ const ExperienceCarousel: React.FC = () => {
                             border: '1.5px solid #333',
                         }}
                     >
-                        <img
+                        <Image
                             src={exp.img}
                             alt={exp.title}
                             className="w-full h-full object-cover rounded-[1.5rem]"

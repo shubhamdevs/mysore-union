@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 
@@ -45,20 +44,37 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black p-4 md:p-8">
+    <div className="min-h-screen p-4 md:p-8">
+      {/* Mouse-following gradient */}
+      < div
+        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
+        }
+        }
+      />
+
+
       <div className="max-w-[90%] mx-auto my-8 ">
         {/* Headline outside the card, styled like reservation section */}
         <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-12 tracking-tight text-center" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>
           FREQUENTLY ASKED QUESTIONS
         </h1>
         {/* Glass-morphism card container */}
-        <div className="backdrop-blur-xl bg-gradient-to-br from-black/80 via-gray-900/60 to-gray-800/40 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-600/20">
+        {/* <div className="backdrop-blur-xl bg-gradient-to-br from-black/80 via-gray-900/60 to-gray-800/40 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-600/20"> */}
+        <div className="
+  backdrop-blur-xl bg-[rgba(12,12,16,0.72)] bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5
+  rounded-3xl
+  p-8 md:p-12
+  shadow-2xl
+  border border-white/10
+">
           {/* Accordion items */}
           <div className="space-y-4">
             {faqData.map((item) => (
               <div
                 key={item.id}
-                className="border border-gray-500/30 rounded-2xl overflow-hidden transition-all duration-300 hover:border-gray-400/50 hover:shadow-lg"
+                className="border border-gray-500/30 rounded-full overflow-hidden transition-all duration-300 hover:border-gray-400/50 hover:shadow-lg"
               >
                 {/* Question button */}
                 <button

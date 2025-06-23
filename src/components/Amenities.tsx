@@ -198,8 +198,9 @@ const Amenities: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 sm:py-32 px-4 md:px-16 overflow-visible section-bg" >      {/* Gradient background */}
-      < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90 z-0" />
+    <section ref={sectionRef} className="relative py-24 sm:py-32 px-4 md:px-16 overflow-visible" >
+      {/* Gradient background */}
+      {/* < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90 z-0" /> */}
 
       {/* Mouse-following gradient */}
       < div

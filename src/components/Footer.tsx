@@ -50,7 +50,7 @@ const Footer: React.FC = () => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
     viewport={{ once: true }}
-    className="w-full bg-[#181818] border-t border-[#232323] py-8 md:py-10 px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6 rounded-t-3xl"
+    className="w-full border-t border-[#232323] py-8 md:py-10 px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6 rounded-t-3xl"
   >
     <motion.div
       initial={{ opacity: 0, x: -20 }}

@@ -28,12 +28,12 @@ const DescriptiveSection: React.FC = () => {
   }, []);
 
   return (
-    <section
+    <div
       ref={ref}
-      className="relative flex flex-col md:flex-row items-center justify-between min-h-[60vh] px-6 md:px-20 py-24 overflow-hidden section-bg"
+      className="relative flex flex-col md:flex-row items-center justify-between min-h-[60vh] px-6 md:px-20 py-24 overflow-hidden "
     >
       {/* Gradient background */}
-      < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" />
+      {/* < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" /> */}
 
       {/* Mouse-following gradient */}
       < div
@@ -43,6 +43,7 @@ const DescriptiveSection: React.FC = () => {
         }
         }
       />
+
       {/* Text section without mask */}
       <div className="flex-1 w-[90%] md:w-3/4 relative z-10">
         <div className="relative" style={{ minHeight: 220, fontFamily: 'Antic Slab, serif' }}>
@@ -72,10 +73,11 @@ const DescriptiveSection: React.FC = () => {
               className="transition-transform duration-500 hover:scale-110 object-contain"
               style={{ width: '100%', height: '100%' }}
             />
+            {/* <img alt="Noise Texture Example" src="https://www.transparenttextures.com/patterns/noise.png"></img> */}
           </div>
         </div>
       </motion.div>
-    </section>
+    </div>
   );
 };
 

@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
 import ExperienceCarousel from './ExperienceCarousal';
 
-interface TabData {
-  id: string;
-  label: string;
-  isActive: boolean;
-}
+// interface TabData {
+//   id: string;
+//   label: string;
+//   isActive: boolean;
+// }
 
 
 const ReserveSection: React.FC = () => {
@@ -50,7 +50,17 @@ const ReserveSection: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen relative">
+
+      {/* Mouse-following gradient */}
+      < div
+        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
+        }
+        }
+      />
+
       <div className="container mx-auto px-4 py-8 lg:py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-6 tracking-tight" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>
@@ -72,8 +82,15 @@ const ReserveSection: React.FC = () => {
               viewport={{ once: true }}
               className="w-full "
             >
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center   bg-gradient-to-br from-black/80 via-gray-900/60 to-gray-800/40 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden backdrop-blur-sm">
-                <div className="p-8 md:p-10">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center
+  bg-[rgba(12,12,16,0.72)] 
+  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5
+  backdrop-blur-xl
+  rounded-3xl
+  border border-white/10
+  shadow-2xl
+  overflow-hidden
+">                <div className="p-8 md:p-10">
                   {/* Tab Navigation */}
                   <div className="flex space-x-2 mb-8">
                     <button
@@ -109,9 +126,7 @@ const ReserveSection: React.FC = () => {
                     </button>
                   </div>
 
-                  {/* Form Content */}
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Amenities Dropdown - Only show in amenities tab */}
                     {activeTab === 'amenities' && (
                       <div className="relative">
                         <button

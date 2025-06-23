@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main className="relative" >
-      <div className="fixed inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" />
+      {/* <div className="fixed inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" /> */}
       <div className="relative z-10" >
         <section id="welcome" > <Hero /></section >
         <section id="introduction" className="section-bg" > <DescriptiveSection /></section >
