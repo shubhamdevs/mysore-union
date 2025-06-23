@@ -93,22 +93,29 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="absolute top-0 left-0 w-full flex justify-center md:justify-between  items-center px-4 sm:px-6 pt-4 sm:pt-6 z-20"
+              className="absolute top-0 left-0 w-full flex justify-center md:justify-between  items-center px-4 md:pr-16 md:pl-10 sm:px-6 pt-4 sm:pt-6 z-20"
             >
-              <h1 className="text-white text-5xl sm:text-8xl md:text-8xl mt-[4rem] md:mt-0 font-changa-one-regular leading-none select-none">Mysore Union</h1>
-              {
-                !isMobile && (
-                  <motion.a
-                    href="#reserve"
-                    className="z-40 luxury-button px-6 py-2 text-lg font-normal shadow-md flex items-center gap-2 mt-2 hover:bg-gray-900/40 hover:text-white"
-                    whileHover={{ scale: 1.05 }
-                    }
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Reserve
-                    <span className="inline-block ml-1 text-xl">↗</span>
-                  </motion.a>
-                )}
+              <h1 className="text-white text-5xl sm:text-8xl md:text-8xl mt-[4rem] md:mt-0 changa-one-regular leading-none select-none">Mysore Union</h1>
+              {!isMobile && (
+                <motion.a
+                  href="#reserve"
+                  className="z-40 luxury-button px-6 py-2 text-lg font-normal shadow-md flex items-center gap-2 mt-2 relative overflow-hidden group bg-slate-200/30 border-slate-300 text-slate-100 hover:bg-slate-400/70 hover:text-white"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Always visible silver glow */}
+                  <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-slate-200 via-gray-300 to-slate-400 opacity-60 blur-sm animate-pulse"></div>
+
+                  {/* Hover shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-300/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+
+                  {/* Click pulse effect */}
+                  <div className="absolute inset-0 bg-slate-400/50 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
+
+                  <span className="relative z-10 group-hover:text-black/50 transition-colors duration-300">Reserve</span>
+                  <span className="inline-block ml-1 text-xl !bg-transparent relative z-10 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-active:scale-125 transition-transform duration-300" style={{ backgroundColor: 'transparent' }}>↗</span>
+                </motion.a>
+              )}
             </motion.div>
 
 
@@ -152,7 +159,8 @@ const Hero = () => {
                   className="absolute bottom-10 left-10 z-20 max-w-xs"
                 >
                   <span className="text-white text-2xl md:text-3xl font-light leading-tight">
-                    Closer to Nature — Closer to Yourself
+                    Closer to Nature, <br />
+                    Closer to Yourself
                   </span>
                 </motion.div>
 
@@ -162,7 +170,7 @@ const Hero = () => {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="absolute bottom-10 right-10 z-20 max-w-sm text-right"
                 >
-                  <span className="text-white text-xl opacity-80 font-light">
+                  <span className="text-white text-xl opacity-80 font-light montserrat-regular">
                     Spend unforgettable and remarkable time in the Mysore Union club — luxury, nature, and you.
                   </span>
                 </motion.div>

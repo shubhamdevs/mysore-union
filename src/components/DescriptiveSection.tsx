@@ -48,7 +48,7 @@ const DescriptiveSection: React.FC = () => {
       <div className="flex-1 w-[90%] md:w-3/4 relative z-10">
         <div className="relative" style={{ minHeight: 220, fontFamily: 'Antic Slab, serif' }}>
           <div className="relative">
-            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white font-antic-slab-regular ">
+            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white antic-slab-regular  ">
               {description}
             </span>
           </div>

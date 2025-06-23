@@ -64,7 +64,7 @@ const ReserveSection: React.FC = () => {
         </div>
 
 
-        <div className="w-full max-w-7xl mx-auto p-4 md:p-8">
+        <div className="w-full max-w-7xl mx-auto  md:p-8">
           <div className="">
             {/* Form Section */}
             <motion.div
@@ -74,8 +74,8 @@ const ReserveSection: React.FC = () => {
               viewport={{ once: true }}
               className="w-full "
             >
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10  shadow-2xl overflow-hidden">
-                <div className="w-full lg:w-1/2 p-8 md:p-10">
+              <div className=" flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10  shadow-2xl overflow-hidden">
+                <div className="w-full lg:w-1/2 p-6 md:p-10">
                   {/* Tab Navigation */}
                   <div className="flex space-x-2 mb-8">
                     <button

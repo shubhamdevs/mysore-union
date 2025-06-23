@@ -1,8 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+/* Typography */
 @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+/* Host Grotesk */
+.host-grotesk-regular {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.host-grotesk-light {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/*Montserrat*/
+.montserrat-regular {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 /* Titillium Web */
 .titillium-web-extralight {
@@ -107,7 +129,6 @@
 }
 
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -122,8 +143,6 @@
   --color-black: #111111;
   --color-gray-dark: #222222;
   --color-gray-light: #F5F5F5;
-  --font-heading: 'Host Grotesk', Arial, sans-serif;
-  --font-body: 'Montserrat', Arial, sans-serif;
   --font-size-xs: 0.85rem;
   --font-size-sm: 1rem;
   --font-size-md: 1.125rem;
@@ -208,32 +227,9 @@ body {
   transform: translateY(0);
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--color-gold);
-}
 
-body,
-p,
-span,
-li,
-input,
-select,
-textarea,
-button {
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  font-weight: 300;
-  letter-spacing: 0.01em;
-}
+
+
 
 /* Smooth scrolling */
 html {
@@ -558,7 +554,7 @@ video * {
 
 @media (max-width: 900px) {
 
-  
+
   .section-bg,
   main,
   section {
