@@ -1,93 +1,107 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
-const faqs = [
-  {
-    question: "What are your operating hours?",
-    answer: "We are open daily from 6:00 AM to 10:00 PM. Our dining facilities operate from 7:00 AM to 11:00 PM."
-  },
-  {
-    question: "Do I need a membership to access the facilities?",
-    answer: "Yes, Mysore Union is a members-only club. We offer various membership tiers to suit different needs and preferences."
-  },
-  {
-    question: "What amenities are included in the membership?",
-    answer: "Members have access to our state-of-the-art fitness center, swimming pool, squash courts, yoga studio, and fine dining facilities. Additional services like personal training and spa treatments are available at an extra cost."
-  },
-  {
-    question: "How can I book a dining reservation?",
-    answer: "You can make dining reservations through our website, mobile app, or by calling our concierge service. We recommend booking at least 24 hours in advance for peak hours."
-  },
-  {
-    question: "Is there parking available?",
-    answer: "Yes, we provide complimentary valet parking for all members and their guests. Self-parking is also available in our secure underground parking facility."
-  }
+
+interface FAQItem {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+const faqData: FAQItem[] = [{
+  id: 1,
+  question: "What are your operating hours?",
+  answer: "We are open daily from 6:00 AM to 10:00 PM. Our dining facilities operate from 7:00 AM to 11:00 PM."
+},
+{
+  id: 2,
+  question: "Do I need a membership to access the facilities?",
+  answer: "Yes, Mysore Union is a members-only club. We offer various membership tiers to suit different needs and preferences."
+},
+{
+  id: 3,
+  question: "What amenities are included in the membership?",
+  answer: "Members have access to our state-of-the-art fitness center, swimming pool, squash courts, yoga studio, and fine dining facilities. Additional services like personal training and spa treatments are available at an extra cost."
+},
+{
+  id: 4,
+  question: "How can I book a dining reservation?",
+  answer: "You can make dining reservations through our website, mobile app, or by calling our concierge service. We recommend booking at least 24 hours in advance for peak hours."
+},
+{
+  id: 5,
+  question: "Is there parking available?",
+  answer: "Yes, we provide complimentary valet parking for all members and their guests. Self-parking is also available in our secure underground parking facility."
+}
 ];
 
 const FAQSection: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openItem, setOpenItem] = useState<number | null>(null);
+
+  const toggleItem = (id: number) => {
+    setOpenItem(openItem === id ? null : id);
+  };
 
   return (
-    <section id="faq" className="w-full flex flex-1  px-4 py-8 sm:py-16 sm:px-6 md:px-12 lg:px-6 ">
-      <div className='w-[90%] md:w-full mx-auto  px-4 py-20 bg-[#181818] rounded-3xl shadow-2xl border border-[#232323]'>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-[22px] font-normal text-center mb-8 font-host-grotesk text-gold"
-          style={{ color: 'white', letterSpacing: '0.04em' }}
-        >
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black p-4 md:p-8">
+      <div className="max-w-[90%] mx-auto my-8 ">
+        {/* Headline outside the card, styled like reservation section */}
+        <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-12 tracking-tight text-center" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>
           FREQUENTLY ASKED QUESTIONS
-        </motion.h2>
-        <div className=" items-center  divide-y divide-[#232323] flex flex-col faq-list">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.9 }}
-              className="py-1 md:py-3 sm:py-2 w-[90%]"
-            >
-              <motion.button
-                className="w-full text-left flex justify-between items-center font-light text-white focus:outline-none px-2 font-host-grotesk luxury-button faq-question"
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                whileHover={{ x: 5 }}
+        </h1>
+        {/* Glass-morphism card container */}
+        <div className="backdrop-blur-xl bg-gradient-to-br from-black/80 via-gray-900/60 to-gray-800/40 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-600/20">
+          {/* Accordion items */}
+          <div className="space-y-4">
+            {faqData.map((item) => (
+              <div
+                key={item.id}
+                className="border border-gray-500/30 rounded-2xl overflow-hidden transition-all duration-300 hover:border-gray-400/50 hover:shadow-lg"
               >
-                {faq.question}
-                <motion.span
-                  className="ml-6 text-white transition-transform duration-300"
-                  animate={{ rotate: openIndex === i ? 90 : 0 }}
+                {/* Question button */}
+                <button
+                  onClick={() => toggleItem(item.id)}
+                  className="w-full px-6 py-5 md:px-8 md:py-6 text-left bg-gradient-to-r from-gray-700/20 to-gray-800/20 hover:from-gray-600/30 hover:to-gray-700/30 transition-all duration-300 active:scale-[0.99] group"
                 >
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </motion.span>
-              </motion.button>
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{
-                  height: openIndex === i ? 'auto' : 0,
-                  opacity: openIndex === i ? 1 : 0
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="text-white/80 leading-relaxed px-2 font-light font-montserrat faq-answer">
-                  {faq.answer}
+                  <div className="flex items-center justify-between">
+                    <span className="text-white text-lg md:text-xl font-medium pr-4 group-hover:text-gray-100 transition-colors duration-200">
+                      {item.question}
+                    </span>
+                    <ChevronDownIcon
+                      className={`w-6 h-6 text-gray-300 transition-all duration-300 flex-shrink-0 group-hover:text-white ${openItem === item.id ? 'rotate-180' : 'rotate-0'
+                        }`}
+                    />
+                  </div>
+                </button>
+
+                {/* Answer content */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${openItem === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                >
+                  <div className="px-6 py-5 md:px-8 md:py-6 bg-gradient-to-r from-gray-800/10 to-gray-900/10 border-t border-gray-600/20">
+                    <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
-            </motion.div>
-          ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom decorative element */}
+          <div className="mt-12 text-center">
+            <div className="inline-block w-24 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent rounded-full opacity-50"></div>
+            <p className="mt-6 text-gray-300 text-base md:text-lg text-center">
+              Have more questions? Please <a href="/contact" className="underline hover:text-amber-200 transition-colors">contact us</a> for further assistance.
+            </p>
+          </div>
         </div>
       </div>
-
-    </section>
+    </div>
   );
 };
 
-export default FAQSection; 
+export default FAQSection;

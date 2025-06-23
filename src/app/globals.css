@@ -1,4 +1,112 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
+/* Titillium Web */
+.titillium-web-extralight {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.titillium-web-light {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.titillium-web-regular {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.titillium-web-semibold {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.titillium-web-bold {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.titillium-web-black {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.titillium-web-extralight-italic {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.titillium-web-light-italic {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.titillium-web-regular-italic {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.titillium-web-semibold-italic {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.titillium-web-bold-italic {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Montserrat */
+.montserrat-regular {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Montserrat Italic */
+.montserrat-regular-italic {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Headline Regular*/
+.changa-one-regular {
+  font-family: "Changa One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Headline Italic*/
+.changa-one-regular-italic {
+  font-family: "Changa One", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/*For Description */
+.antic-slab-regular {
+  font-family: "Antic Slab", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 
 @tailwind base;
 @tailwind components;
@@ -365,144 +473,6 @@ html {
 
 .faq-list {
   gap: 0.5rem !important;
-}
-
-input,
-select,
-textarea {
-  border-radius: var(--radius-input);
-  font-family: var(--font-body);
-  font-size: var(--font-size-md);
-  background: var(--color-gray-dark);
-  color: var(--color-gold);
-  border: 1.5px solid #333;
-  padding: 1rem 1.5rem;
-  transition: border 0.2s, box-shadow 0.2s;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 2px var(--color-gold-light);
-}
-
-/* Date and Time Input Styling */
-/* input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: var(--color-gray-dark);
-  color: var(--color-gold);
-  border: 1.5px solid #333;
-  border-radius: var(--radius-input);
-  padding: 1rem 1.5rem;
-  font-family: var(--font-body);
-  font-size: var(--font-size-md);
-  transition: border 0.2s, box-shadow 0.2s;
-}
-
-input[type="date"]::-webkit-inner-spin-button,
-input[type="time"]::-webkit-inner-spin-button,
-input[type="datetime-local"]::-webkit-inner-spin-button,
-input[type="month"]::-webkit-inner-spin-button,
-input[type="week"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="date"]:focus,
-input[type="time"]:focus,
-input[type="datetime-local"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus {
-  outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 2px var(--color-gold-light);
-}
-
-/* Custom styling for date and time inputs */
-/* input[type="date"],
-input[type="time"] {
-  min-width: 130px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  position: relative;
-}
-
-/* Ensure the picker icons are visible */
-/* input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  padding: 4px;
-  filter: invert(1);
-  opacity: 0.7;
-}
-
-*/
-
-/* Ensure proper coloring on mobile devices */
-/* input[type="date"],
-input[type="time"] {
-  color-scheme: dark;
-}  */
-
-/* Hide default placeholder text in webkit browsers */
-/* input[type="date"]::-webkit-datetime-edit {
-  color: transparent;
-}
-
-input[type="date"]:focus::-webkit-datetime-edit,
-input[type="date"]:valid::-webkit-datetime-edit {
-  color: white;
-}
-
-input[type="time"]::-webkit-datetime-edit {
-  color: transparent;
-}
-
-input[type="time"]:focus::-webkit-datetime-edit,
-input[type="time"]:valid::-webkit-datetime-edit {
-  color: white;
-} */
-
-
-/* Host Grotesk font-face setup */
-@font-face {
-  font-family: 'Host Grotesk';
-  src: url('/fonts/Host Grotesk/HostGrotesk-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Host Grotesk';
-  src: url('/fonts/Host Grotesk/HostGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-.font-montserrat {
-  font-family: 'Montserrat', Arial, sans-serif !important;
-}
-
-.font-host-grotesk {
-  font-family: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif !important;
-}
-
-/* Font fallbacks */
-:root {
-  --font-heading: 'Host Grotesk', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: 'Montserrat', Arial, sans-serif;
 }
 
 /* Responsive Typography & Spacing */
