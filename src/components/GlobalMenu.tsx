@@ -123,9 +123,11 @@ const GlobalMenu: React.FC = () => {
         style={{
           left: '50%',
           transform: 'translateX(-50%)',
+          transition: 'transform 4s ease-in-out, opacity 0.5s ease-in-out', // Added transform here
+
           width: isSmallMobile ? '90%' : 'auto',
           transitionBehavior: 'transform, opacity',
-          transitionDuration: '10s',
+          transitionDuration: '0.5s',
           transitionTimingFunction: 'ease-in-out',
           transitionDelay: '0s',
         }}
@@ -205,9 +207,9 @@ const GlobalMenu: React.FC = () => {
               transition={{ duration: 0.2, type: 'spring', stiffness: 300, damping: 30 }}
             >
               {/* Left section: menu links and socials */}
-              <div className="flex-1 flex flex-col justify-evenly items-center pt-16 pb-8 px-6 md:px-12 lg:px-20 global-menu-container  ">
+              <div className="flex-1 flex flex-col justify-evenly items-center pt-16 pb-8 px-4 md:px-12 lg:px-20 global-menu-container  ">
                 {/* Navigation Menu Section */}
-                <div className="w-full max-w-md menu-section">
+                <div className="w-full  menu-section">
                   <ul className="space-y-8 md:space-y-10 w-full ">
                     {sections.map((section) => (
                       <li key={section.id}>
@@ -307,7 +309,7 @@ const GlobalMenu: React.FC = () => {
               </div>
 
               {/* Close button for large screens, bottom center */}
-              <div className="hidden lg:flex fixed left-1/2 -translate-x-1/2 bottom-8 z-[100] transition-opacity ">
+              <div className="hidden md:flex fixed left-1/2 -translate-x-1/2 bottom-8 z-[100] transition-opacity ">
                 <button
                   className="luxury-button px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px]"
                   style={{ fontFamily: 'Host Grotesk, sans-serif' }}
