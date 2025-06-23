@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-
+import { cn } from '..//lib/utils'; // Import cn function from your utils
 
 interface FAQItem {
   id: number;
@@ -45,15 +45,6 @@ const FAQSection: React.FC = () => {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      {/* Mouse-following gradient */}
-      < div
-        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
-        }
-        }
-      />
-
 
       <div className="max-w-[90%] mx-auto my-8 ">
         {/* Headline outside the card, styled like reservation section */}
@@ -62,46 +53,47 @@ const FAQSection: React.FC = () => {
         </h1>
         {/* Glass-morphism card container */}
         {/* <div className="backdrop-blur-xl bg-gradient-to-br from-black/80 via-gray-900/60 to-gray-800/40 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-600/20"> */}
-        <div className="
-  backdrop-blur-xl bg-[rgba(12,12,16,0.72)] bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5
-  rounded-3xl
-  p-8 md:p-12
-  shadow-2xl
-  border border-white/10
-">
+        <div className="bg-transparent">
           {/* Accordion items */}
-          <div className="space-y-4">
+          <div className="space-y-0 divide-y divide-gray-700/40">
             {faqData.map((item) => (
-              <div
-                key={item.id}
-                className="border border-gray-500/30 rounded-full overflow-hidden transition-all duration-300 hover:border-gray-400/50 hover:shadow-lg"
-              >
-                {/* Question button */}
+              <div key={item.id}>
                 <button
                   onClick={() => toggleItem(item.id)}
-                  className="w-full px-6 py-5 md:px-8 md:py-6 text-left bg-gradient-to-r from-gray-700/20 to-gray-800/20 hover:from-gray-600/30 hover:to-gray-700/30 transition-all duration-300 active:scale-[0.99] group"
+                  className={cn(
+                    "w-full flex items-center justify-between py-5 md:py-6 text-left transition-colors duration-200 group focus:outline-none",
+                    openItem === item.id ? "font-semibold text-white" : "text-gray-200 hover:text-white"
+                  )}
+                  aria-expanded={openItem === item.id}
+                  aria-controls={`faq-answer-${item.id}`}
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-white text-lg md:text-xl font-medium pr-4 group-hover:text-gray-100 transition-colors duration-200">
-                      {item.question}
-                    </span>
-                    <ChevronDownIcon
-                      className={`w-6 h-6 text-gray-300 transition-all duration-300 flex-shrink-0 group-hover:text-white ${openItem === item.id ? 'rotate-180' : 'rotate-0'
-                        }`}
-                    />
-                  </div>
+                  <span className="text-base md:text-lg pr-4">{item.question}</span>
+                  <ChevronDownIcon
+                    className={cn(
+                      "w-6 h-6 text-gray-400 transition-transform duration-300 flex-shrink-0 group-hover:text-amber-200",
+                      openItem === item.id ? "rotate-180 text-amber-200" : "rotate-0"
+                    )}
+                  />
                 </button>
-
-                {/* Answer content */}
                 <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${openItem === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                  id={`faq-answer-${item.id}`}
+                  className={cn(
+                    "overflow-hidden transition-all duration-400 ease-in-out",
+                    openItem === item.id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  )}
+                  style={{
+                    background: openItem === item.id ? 'rgba(30,30,36,0.92)' : 'none',
+                    borderRadius: openItem === item.id ? '1rem' : '0',
+                    marginBottom: openItem === item.id ? '1.5rem' : '0',
+                  }}
                 >
-                  <div className="px-6 py-5 md:px-8 md:py-6 bg-gradient-to-r from-gray-800/10 to-gray-900/10 border-t border-gray-600/20">
-                    <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-                      {item.answer}
-                    </p>
-                  </div>
+                  {openItem === item.id && (
+                    <div className="px-2 md:px-6 py-4 md:py-6">
+                      <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                        {item.answer}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

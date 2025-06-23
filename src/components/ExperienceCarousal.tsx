@@ -58,8 +58,10 @@ const ExperienceCarousel: React.FC = () => {
                         <Image
                             src={exp.img}
                             alt={exp.title}
-                            className="w-full h-full object-cover rounded-[1.5rem]"
+                            fill
+                            className="object-cover rounded-[1.5rem]"
                             loading={i === 0 ? "eager" : "lazy"}
+                            sizes="100vw"
                         />
                         <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-[1.5rem]">
                             <h3 className="text-white text-lg sm:text-xl font-medium">{exp.title}</h3>

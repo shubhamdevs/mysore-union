@@ -50,16 +50,8 @@ const ReserveSection: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen ">
 
-      {/* Mouse-following gradient */}
-      < div
-        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
-        }
-        }
-      />
 
       <div className="container mx-auto px-4 py-8 lg:py-16">
         <div className="text-center mb-12">
@@ -82,15 +74,8 @@ const ReserveSection: React.FC = () => {
               viewport={{ once: true }}
               className="w-full "
             >
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center
-  bg-[rgba(12,12,16,0.72)] 
-  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5
-  backdrop-blur-xl
-  rounded-3xl
-  border border-white/10
-  shadow-2xl
-  overflow-hidden
-">                <div className="p-8 md:p-10">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10  shadow-2xl overflow-hidden">
+                <div className="p-8 md:p-10">
                   {/* Tab Navigation */}
                   <div className="flex space-x-2 mb-8">
                     <button
@@ -187,7 +172,7 @@ const ReserveSection: React.FC = () => {
                     {/* Date and Time Row */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="relative group">
-                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 pointer-events-none">
                           <Calendar className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                         </div>
                         <input
@@ -204,7 +189,7 @@ const ReserveSection: React.FC = () => {
                       </div>
 
                       <div className="relative group">
-                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 pointer-events-none">
                           <Clock className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                         </div>
                         <input
@@ -224,7 +209,7 @@ const ReserveSection: React.FC = () => {
                     {/* Number of Guests - Only show in dining tab */}
                     {activeTab === 'dining' && (
                       <div className="relative group">
-                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 pointer-events-none">
                           <Users className="w-5 h-5 text-gray-400 group-hover:text-gray-300 transition-colors" />
                         </div>
                         <input

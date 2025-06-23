@@ -48,7 +48,7 @@ const amenities = [
   },
   {
     title: "Badminton Court",
-    image: "/images/amenities/Badminton.JPG",
+    image: "/images/amenities/Badminton.jpg",
   },
   {
     title: "Semi-Olympic Pool",
@@ -56,15 +56,15 @@ const amenities = [
   },
   {
     title: "Children's Play Area",
-    image: "/images/amenities/PlayArea.JPG",
+    image: "/images/amenities/PlayArea.jpg",
   },
   {
     title: "Lounge & Swim",
-    image: "/images/amenities/LoungeSwim.JPG",
+    image: "/images/amenities/LoungeSwim.jpg",
   },
   {
     title: "Restaurant",
-    image: "/images/amenities/Restaurant.JPG",
+    image: "/images/amenities/Restaurant.jpg",
   },
 ];
 
@@ -198,7 +198,7 @@ const Amenities: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 sm:py-32 px-4 md:px-16 overflow-visible" >
+    <section ref={sectionRef} className="relative py-24 sm:py-32 px-4 md:px-16 overflow-visible " >
       {/* Gradient background */}
       {/* < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90 z-0" /> */}
 
