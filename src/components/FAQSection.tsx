@@ -61,13 +61,17 @@ const FAQSection: React.FC = () => {
                 <button
                   onClick={() => toggleItem(item.id)}
                   className={cn(
-                    "w-full flex items-center justify-between py-5 md:py-6 text-left transition-colors duration-200 group focus:outline-none",
-                    openItem === item.id ? "font-semibold text-white" : "text-gray-200 hover:text-white"
+                    "w-full flex items-center justify-between py-5 md:py-6 text-left transition duration-200 group focus:outline-none",
+                    openItem === item.id
+                      ? "font-semibold text-white"
+                      : "text-gray-200",
+                    "hover:scale-[1.03] active:scale-[0.98]"
                   )}
                   aria-expanded={openItem === item.id}
                   aria-controls={`faq-answer-${item.id}`}
+                  style={{ transition: 'transform 0.2s, color 0.3s' }}
                 >
-                  <span className="text-base md:text-lg pr-4">{item.question}</span>
+                  <span className="text-base md:text-lg pr-4 transition-colors duration-200">{item.question}</span>
                   <ChevronDownIcon
                     className={cn(
                       "w-6 h-6 text-gray-400 transition-transform duration-300 flex-shrink-0 group-hover:text-amber-200",
@@ -78,29 +82,30 @@ const FAQSection: React.FC = () => {
                 <div
                   id={`faq-answer-${item.id}`}
                   className={cn(
-                    "overflow-hidden transition-all duration-400 ease-in-out",
+                    "overflow-hidden transition-all duration-500 ease-in-out",
                     openItem === item.id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   )}
                   style={{
                     background: openItem === item.id ? 'rgba(30,30,36,0.92)' : 'none',
                     borderRadius: openItem === item.id ? '1rem' : '0',
                     marginBottom: openItem === item.id ? '1.5rem' : '0',
+                    transition: 'background 0.3s, border-radius 0.3s, max-height 0.5s, opacity 0.5s',
                   }}
                 >
-                  {openItem === item.id && (
-                    <div className="px-2 md:px-6 py-4 md:py-6">
-                      <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                        {item.answer}
-                      </p>
-                    </div>
-                  )}
+                  <div className={cn(
+                    openItem === item.id ? "px-2 md:px-6 py-4 md:py-6" : "px-2 md:px-6 py-0"
+                  )}>
+                    <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                      {openItem === item.id && item.answer}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Bottom decorative element */}
-          <div className="mt-12 text-center">
+          <div className="mt-6 text-center">
             <div className="inline-block w-24 h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent rounded-full opacity-50"></div>
             <p className="mt-6 text-gray-300 text-base md:text-lg text-center">
               Have more questions? Please <a href="/contact" className="underline hover:text-amber-200 transition-colors">contact us</a> for further assistance.

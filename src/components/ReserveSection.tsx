@@ -74,7 +74,9 @@ const ReserveSection: React.FC = () => {
               viewport={{ once: true }}
               className="w-full "
             >
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10  shadow-2xl overflow-hidden">
+              {              // bg-[rgba(12,12,16,0.72)]  bg-gradient-to-br from-white/5 via-slate-200/5 to-white/5 backdrop-blur-xl  rounded-3xl border border-white/10
+              }
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center  shadow-2xl overflow-hidden">
                 <div className="p-8 md:p-10">
                   {/* Tab Navigation */}
                   <div className="flex space-x-2 mb-8">
