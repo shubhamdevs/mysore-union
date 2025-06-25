@@ -5,15 +5,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
-// Gym image data for potential future use
-// const gymImages = [
-//   { src: '/images/amenities/gym1.jpg', title: 'Modern Fitness Equipment' },
-//   { src: '/images/amenities/gym2.jpg', title: 'Cardio Training Zone' },
-//   { src: '/images/amenities/gym3.jpg', title: 'Weight Training Area' },
-//   { src: '/images/amenities/gym4.jpg', title: 'Personal Training Space' },
-//   { src: '/images/amenities/gym5.jpg', title: 'Advanced Workout Machines' },
-//   { src: '/images/amenities/gym6.jpg', title: 'Fitness Studio' }
-// ]
 
 // Scrolling row images
 const scrollingImages = [
@@ -145,7 +136,7 @@ const ScrollingRow: React.FC<{ images: Array<{ title: string, image: string }> }
         {[...images, ...images].map((item, i) => (
           <div
             key={`${item.title}-${i}`}
-            className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex-shrink-0"
+            className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323]  flex-shrink-0"
             style={{ width: '300px', height: '200px' }}
           >
             <div className="relative w-full h-full">
@@ -199,17 +190,6 @@ const Amenities: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="relative py-24 sm:py-32 px-4 md:px-16 overflow-visible " >
-      {/* Gradient background */}
-      {/* < div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90 z-0" /> */}
-
-      {/* Mouse-following gradient */}
-      < div
-        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 50%)'
-        }
-        }
-      />
 
       {/* Top left circular logo (behind grid, clockwise) */}
       <CircularTextLogo className="-top-16 -left-16 opacity-40" zIndex={0} style={{ filter: 'blur(1px)' }} reverse={false} />
@@ -228,14 +208,14 @@ const Amenities: React.FC = () => {
               amenities.map((amenity, i) => (
                 <div
                   key={amenity.title}
-                  className="relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col"
+                  className="relative group rounded-2xl overflow-hidden hover:shadow-[0_-8px_32px_-4px_rgba(192,199,207,0.4),0_8px_32px_-4px_rgba(192,199,207,0.4),0_0_0_1px_rgba(224,230,237,0.2)] bg-[#181818] border border-[#232323] flex flex-col"
                 >
-                  <div className="relative w-full h-48 min-h-[100px]" >
+                  <div className="relative w-full h-48 min-h-[100px] " >
                     <Image
                       src={amenity.image}
                       alt={amenity.title}
                       fill
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className=" glow-hover absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       style={{ borderRadius: 0 }}
                       sizes="100vw"
                       priority={i < 2}
@@ -259,17 +239,17 @@ const Amenities: React.FC = () => {
               variants={gridVariants}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.2 }
-              }
+              viewport={{ once: true, amount: 0.2 }}
             >
               {
                 amenities.map((amenity, i) => (
                   <motion.div
                     key={amenity.title}
-                    className={`relative group rounded-2xl overflow-hidden shadow-lg bg-[#181818] border border-[#232323] flex flex-col ${areaStyles[gridAreas[i]]}`}
+                    className={`relative group rounded-2xl overflow-hidden hover:shadow-[0_-8px_32px_-4px_rgba(192,199,207,0.4),0_8px_32px_-4px_rgba(192,199,207,0.4),0_0_0_1px_rgba(224,230,237,0.2)]  bg-[#181818] border border-[#232323] flex flex-col ${areaStyles[gridAreas[i]]}`}
                     variants={itemVariants}
                   >
-                    <div className="relative w-full h-full min-h-[100px]" >
+                    {/* <div className="silver-glow" /> */}
+                    <div className="z-50 relative w-full h-full min-h-[100px]" >
                       <Image
                         src={amenity.image}
                         alt={amenity.title}
@@ -287,8 +267,9 @@ const Amenities: React.FC = () => {
                   </motion.div>
                 ))}
 
-            </motion.div>            {/* Desktop Scrolling Row */}
-            <div className="relative z-30 max-w-6xl mx-auto mb-44">
+            </motion.div>
+            {/* Desktop Scrolling Row */}
+            <div className="relative z-30 max-w-6xl mx-auto mb-32">
               <h3 className="text-xl sm:text-6xl text-white mb-6 ml-2 antic-slab-regular font-light relative z-20 drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>More Amenities</h3>
               <ScrollingRow images={scrollingImages} />
             </div>

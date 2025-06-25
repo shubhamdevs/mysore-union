@@ -8,6 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 
 import Image from "next/image";
+import { RainbowButton } from "./magicui/rainbow-button";
 
 const sections = [
   { name: "Amenities", id: "amenities" },
@@ -133,20 +134,24 @@ const GlobalMenu: React.FC = () => {
         }}
       >
         {/* Menu Button */}
-        <button
+        {/* <button
           className="luxury-button px-3 py-2 flex items-center active:scale-95 hover:scale:102 justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px] relative overflow-hidden group"
           style={{ fontFamily: "Host Grotesk, sans-serif" }}
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
-          {/* Always visible rainbow border glow */}
-          <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-blue-500 to-purple-500 to-pink-500 to-red-500 to-orange-500 to-yellow-500 to-green-500 to-blue-500 opacity-60 blur-sm animate-pulse"></div>
 
-          {/* Hover shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 
-          {/* Click pulse effect */}
-          <div className="absolute inset-0 bg-white/10 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
+          {/* Company colors gradient border glow */}
+        {/* <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-cyan-400 via-lime-400 to-orange-500 opacity-70 blur-sm animate-pulse"></div> */}
+
+        {/* Hover shimmer effect */}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-full"></div> */}
+
+        {/* Click pulse effect */}
+
+        {/*
+        <div className="absolute inset-0 bg-white/20 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
 
           <span className="inline-block w-4 sm:w-5 h-4 sm:h-5 relative z-10 transform group-hover:rotate-90 group-active:rotate-180 transition-transform duration-300">
             <svg
@@ -164,8 +169,41 @@ const GlobalMenu: React.FC = () => {
             </svg>
           </span>
           <span className="font-semibold text-xs sm:text-lg relative z-10  transition-colors duration-300"> Menu </span>
-        </button>
+        </button> */}
+        <RainbowButton
+          className="menu-button px-3 py-2 flex items-center active:scale-95 hover:scale:102 justify-center gap-1  text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px] relative overflow-hidden group"
+          style={{ fontFamily: "Host Grotesk, sans-serif" }}
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+        >
 
+          {/* Company colors gradient border glow */}
+          {/* <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-cyan-400 via-lime-400 to-orange-500 opacity-70 blur-sm animate-pulse"></div> */}
+          <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-blue-500 to-purple-500 to-pink-500 to-red-500 to-orange-500 to-yellow-500 to-green-500 to-blue-500 opacity-60 blur-sm animate-pulse"></div>
+
+          {/* Hover shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-full"></div>
+
+          {/* Click pulse effect */}
+          <div className="absolute inset-0 bg-white/20 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
+
+          <span className="inline-block w-4 sm:w-5 h-4 sm:h-5 relative z-10 transform group-hover:rotate-90 group-active:rotate-180 transition-transform duration-300">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 sm:w-5 h-4 sm:h-5"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </span>
+          <span className="font-semibold text-xs sm:text-lg relative z-10  transition-colors duration-300"> Menu </span>
+        </RainbowButton>
         {/* Conditional Reserve Button */}
         {isMobile && (
           <button
