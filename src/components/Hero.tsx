@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 // Image is not currently used but may be needed for future enhancements
 // import Image from "next/image";
 import { useEffect, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+
+const arrow = '../../public/right-arrow.png';
 
 
 // const handleSectionClick = (id: string) => {
@@ -113,7 +116,9 @@ const Hero = () => {
                   <div className="absolute inset-0 bg-slate-400/50 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
 
                   <span className="relative z-10 group-hover:text-black/50 transition-colors duration-300">Reserve</span>
-                  <span className="inline-block ml-1 text-xl !bg-transparent relative z-10 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-active:scale-125 transition-transform duration-300" style={{ backgroundColor: 'transparent' }}>↗</span>
+                  <span className="inline-block ml-1 text-xl !bg-transparent relative z-10 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-active:scale-125 transition-transform duration-300" style={{ backgroundColor: 'transparent' }}>
+                    <ArrowRight className="size-5  -rotate-45 " />
+                  </span>
                 </motion.a>
               )}
             </motion.div>
