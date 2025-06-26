@@ -9,6 +9,7 @@ import { SiGmail } from "react-icons/si";
 
 import Image from "next/image";
 import { RainbowButton } from "./magicui/rainbow-button";
+import { ArrowRight } from "lucide-react";
 
 const sections = [
   { name: "Amenities", id: "amenities" },
@@ -50,6 +51,13 @@ const socials = [
     color: "#000000"
   },
 ];
+
+const hoverColors = [
+  '#22d3ee', // cyan-400
+  '#a3e635', // lime-400  
+  '#f97316', // orange-500
+];
+
 const GlobalMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [hide, setHide] = useState(false);
@@ -124,13 +132,9 @@ const GlobalMenu: React.FC = () => {
         style={{
           left: '50%',
           transform: 'translateX(-50%)',
-          transition: 'transform 4s ease-in-out, opacity 0.5s ease-in-out', // Added transform here
+          transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out', // Changed from 25s to 0.5s
 
           width: isSmallMobile ? '90%' : 'auto',
-          transitionBehavior: 'transform, opacity',
-          transitionDuration: '0.5s',
-          transitionTimingFunction: 'ease-in-out',
-          transitionDelay: '0s',
         }}
       >
         {/* Menu Button */}
@@ -206,8 +210,8 @@ const GlobalMenu: React.FC = () => {
         </RainbowButton>
         {/* Conditional Reserve Button */}
         {isMobile && (
-          <button
-            className="luxury-button px-3 py-2 flex items-center justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px] relative overflow-hidden group  bg-slate-200/30 border-slate-300 text-slate-100 hover:bg-slate-400/70 hover:text-white"
+          <RainbowButton
+            className="reserve-button px-3 py-2 flex items-center justify-center gap-1 shadow-lg text-xs sm:text-sm lg:text-lg font-medium flex-1 min-h-[40px] sm:min-h-[48px] relative overflow-hidden group  bg-slate-200/30 border-slate-300 text-slate-100 hover:bg-slate-400/70 hover:text-white"
             style={{ fontFamily: "Host Grotesk, sans-serif" }}
             onClick={() => handleSectionClick('reserve')}
             aria-label="Reserve"
@@ -222,8 +226,11 @@ const GlobalMenu: React.FC = () => {
             <div className="absolute inset-0 bg-slate-400/50 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
 
             <span className="font-semibold text-xs sm:text-lg relative z-10 group-hover:text-black/50 transition-colors duration-300">Reserve</span>
-            <span className="inline-block ml-1 text-sm sm:text-xl relative z-10 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-active:scale-125 transition-transform duration-300">↗</span>
-          </button>
+            <span className="inline-block ml-1 text-sm sm:text-xl relative z-10 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-active:scale-125 transition-transform duration-300">
+              <ArrowRight className="size-3  -rotate-45 " />
+
+            </span>
+          </RainbowButton>
         )}
       </div>
 
@@ -238,31 +245,46 @@ const GlobalMenu: React.FC = () => {
           >
             {/* Slide-in menu panel */}
             <motion.div
-              className="w-full h-full flex flex-row bg-gray/20 backdrop-blur-lg noisy-glass z-10 relative"
+              className="w-full h-full flex flex-row bg-gray/20 backdrop-blur-2xl noisy-glass z-10 relative"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
-              transition={{ duration: 0.2, type: 'spring', stiffness: 300, damping: 30 }}
-            >
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1]  // Custom cubic-bezier for smooth ease-in-out
+              }}>
               {/* Left section: menu links and socials */}
-              <div className="flex-1 flex flex-col justify-evenly items-center pt-16 pb-8 px-4 md:px-12 lg:px-20 global-menu-container  ">
+              <div className="flex-1 flex flex-col justify-evenly items-center pt-16 pb-8 md:px-12 lg:px-20 global-menu-container border-2 border-white border-solid "
+
+              >
                 {/* Navigation Menu Section */}
-                <div className="w-full  menu-section">
-                  <ul className="space-y-8 md:space-y-10 w-full ">
-                    {sections.map((section) => (
-                      <li key={section.id}>
-                        <motion.button
-                          className="text-3xl sm:text-4xl  md:text-[clamp(2rem,4vw,4rem)] font-medium text-white/70 hover:text-white w-full text-center menu-item"
-                          style={{ fontFamily: 'Host Grotesk, sans-serif' }}
-                          onClick={() => handleSectionClick(section.id)}
-                          whileHover={{ scale: 1.05, x: 10 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        >
-                          {section.name}
-                        </motion.button>
-                      </li>
-                    ))}
+                <div className="w-full  menu-section  border-2 border-white border-solid ">
+                  <ul className="space-y-6 md:space-y-6 w-full h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
+                    {sections.map((section, index) => {
+
+                      const hoverColor = '#cbd5e1 '
+
+                      return (
+                        <li className="block h-full" key={section.id}>
+                          <motion.button
+                            className={`text-4xl sm:text-5xl h-full font-medium text-white/70 hover:text-slate-300 w-full text-center menu-item`}
+                            style={{ fontFamily: 'Host Grotesk, sans-serif' }}
+                            onClick={() => handleSectionClick(section.id)}
+                            whileHover={{
+                              scale: 1.05,
+                              x: 10,
+                              color: hoverColor,
+                              textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+                            }}
+                            whileTap={{ scale: 0.95 }}
+
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                          >
+                            {section.name}
+                          </motion.button>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
 
@@ -279,8 +301,8 @@ const GlobalMenu: React.FC = () => {
                         whileHover={{
                           scale: 1.1,
                           borderColor: s.color,
-                          backgroundColor: `${s.color}20`, // 20% opacity of the brand color
-                          boxShadow: `0 0 10px 2px ${s.color}30` // Add a subtle glow in brand color
+                          backgroundColor: `${s.color}20`,
+                          boxShadow: `0 0 10px 2px ${s.color}30`
                         }}
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 500, damping: 15 }}
@@ -334,10 +356,10 @@ const GlobalMenu: React.FC = () => {
                         alt={exp.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover rounded-t-[1.5rem]"
+                        className="object-cover rounded-[1.5rem]"
                         priority={i === 0}
                       />
-                      <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                      <div className="absolute bottom-0 left-0 w-full p-4 rounded-[1.5rem] bg-gradient-to-t from-black/80 to-transparent">
                         <h3 className="text-white text-lg sm:text-xl font-medium">{exp.title}</h3>
                         <p className="text-white/80 text-sm sm:text-base mt-1">{exp.desc}</p>
                       </div>
@@ -349,12 +371,21 @@ const GlobalMenu: React.FC = () => {
               {/* Close button for large screens, bottom center */}
               <div className="hidden md:flex fixed left-1/2 -translate-x-1/2 bottom-8 z-[100] transition-opacity ">
                 <button
-                  className="luxury-button px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px]"
+                  className="luxury-button px-8 py-2 flex items-center gap-3 shadow-lg text-lg font-medium min-w-[90px] min-h-[48px] relative overflow-hidden group bg-red-600/20 border-red-400 hover:bg-red-500/30"
                   style={{ fontFamily: 'Host Grotesk, sans-serif' }}
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
                 >
-                  <span className="inline-block w-6 h-6">
+                  {/* Modern red gradient border glow */}
+                  <div className="absolute inset-[-2px] rounded-full bg-gradient-to-r from-red-400 via-rose-500 to-red-600 opacity-60 blur-sm animate-pulse"></div>
+
+                  {/* Hover shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-300/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-full"></div>
+
+                  {/* Click pulse effect */}
+                  <div className="absolute inset-0 bg-red-400/30 rounded-full scale-0 group-active:scale-110 group-active:opacity-0 transition-all duration-300 ease-out opacity-100"></div>
+
+                  <span className="inline-block w-6 h-6 relative z-10 transform group-hover:rotate-90 group-active:rotate-180 transition-transform duration-300">
                     {/* X icon */}
                     <svg
                       viewBox="0 0 24 24"
@@ -369,7 +400,7 @@ const GlobalMenu: React.FC = () => {
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                   </span>
-                  <span className="font-semibold">Close</span>
+                  <span className="font-semibold relative z-10 group-hover:text-red-100 transition-colors duration-300">Close</span>
                 </button>
               </div>
 

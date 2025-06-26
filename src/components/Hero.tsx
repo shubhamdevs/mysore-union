@@ -139,7 +139,7 @@ const Hero = () => {
                   className="text-center"
                 >
                   <span className="text-white text-3xl font-light leading-tight">
-                    Closer to Nature — Closer to Yourself
+                    Closer to Nature Closer to Yourself
                   </span>
                 </motion.div>
 
