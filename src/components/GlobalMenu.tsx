@@ -250,7 +250,7 @@ const GlobalMenu: React.FC = () => {
                 ease: [0.25, 0.1, 0.25, 1]
               }}>
               {/* Left section: menu links and socials */}
-              <div className="w-full flex-1 flex flex-col items-center  pt-16 pb-8 md:px-12 lg:px-20 global-menu-container border-2 border-white border-solid "
+              <div className="w-full flex-1 flex flex-col items-center  pt-16 pb-8 md:px-12 lg:px-20 global-menu-container "
 
               >
                 {/* Navigation Menu Section */}
