@@ -252,7 +252,7 @@ const ReserveSection: React.FC = () => {
                   </form>
                 </div>
                 {/* Carousel Section */}
-                <div className="w-full lg:w-1/2 p-12 flex items-center justify-center ">
+                <div className="w-full lg:w-1/2 p-6 md:p-12 flex items-center justify-center ">
                   <ExperienceCarousel />
                 </div>
               </div>
