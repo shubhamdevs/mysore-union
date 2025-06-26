@@ -254,8 +254,8 @@ const GlobalMenu: React.FC = () => {
 
               >
                 {/* Navigation Menu Section */}
-                <div className="w-full  menu-section  border-2 border-white border-solid ">
-                  <ul className="  w-full h-[40vh] sm:h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
+                <div className="w-full  menu-section  ">
+                  <ul className="  w-full h-[40vh] sm:h-[60vh] flex flex-col justify-between ">
                     {sections.map((section) => {
 
                       const hoverColor = '#cbd5e1 '
@@ -263,8 +263,7 @@ const GlobalMenu: React.FC = () => {
                       return (
                         <li className="block h-full" key={section.id}>
                           <motion.button
-                            className={`text-4xl sm:text-5xl h-full font-medium text-white/70 hover:text-slate-300 w-full text-center menu-item`}
-                            style={{ fontFamily: 'Host Grotesk, sans-serif' }}
+                            className={`roboto-400 text-4xl sm:text-5xl h-full font-medium text-white/70 hover:text-slate-300 w-full text-center menu-item`}
                             onClick={() => handleSectionClick(section.id)}
                             whileHover={{
                               scale: 1.05,
