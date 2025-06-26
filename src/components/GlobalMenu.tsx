@@ -13,7 +13,7 @@ import { ArrowRight } from "lucide-react";
 
 const sections = [
   { name: "Amenities", id: "amenities" },
-  { name: "Experiences", id: "experiences" },
+  { name: "Experiences", id: "amenities" },
   { name: "Reserve", id: "reserve" },
   { name: "FAQ", id: "faq" },
 ];
