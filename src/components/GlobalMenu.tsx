@@ -52,11 +52,7 @@ const socials = [
   },
 ];
 
-const hoverColors = [
-  '#22d3ee', // cyan-400
-  '#a3e635', // lime-400  
-  '#f97316', // orange-500
-];
+
 
 const GlobalMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -260,7 +256,7 @@ const GlobalMenu: React.FC = () => {
                 {/* Navigation Menu Section */}
                 <div className="w-full  menu-section  border-2 border-white border-solid ">
                   <ul className="space-y-6 md:space-y-6 w-full h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
-                    {sections.map((section, index) => {
+                    {sections.map((section) => {
 
                       const hoverColor = '#cbd5e1 '
 

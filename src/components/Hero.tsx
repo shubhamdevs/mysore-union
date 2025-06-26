@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-const arrow = '../../public/right-arrow.png';
 
 
 // const handleSectionClick = (id: string) => {
