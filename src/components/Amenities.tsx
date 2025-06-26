@@ -196,8 +196,8 @@ const Amenities: React.FC = () => {
 
       {/* Section Title */}
       < div className="flex flex-col sm:flex-row items-center sm:items-center justify-center gap-2 sm:gap-6 mb-10 sm:mb-16 mx-auto w-full relative z-10 text-center" >
-        <span className="text-2xl sm:text-[clamp(2.5rem,6vw,5rem)] font-bold block" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}> CRAFTING </span>
-        < span className="text-2xl sm:text-[clamp(2.5rem,6vw,5rem)] font-bold text-white block" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}> EXPERIENCES </span>
+        <span className="text-4xl md:text-6xl font-bold block" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}> CRAFTING </span>
+        < span className="text-4xl md:text-6xl font-bold text-white block" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}> EXPERIENCES </span>
       </div>
 
       {/* Custom grid layout for desktop, vertical stack for mobile */}
@@ -270,7 +270,7 @@ const Amenities: React.FC = () => {
             </motion.div>
             {/* Desktop Scrolling Row */}
             <div className="relative z-30 max-w-6xl mx-auto mb-32">
-              <h3 className="text-xl sm:text-6xl text-white mb-6 ml-2 antic-slab-regular font-light relative z-20 drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>More Amenities</h3>
+              <h3 className="text-4xl sm:text-6xl text-white mb-6 ml-2 roboto-400 font-bold relative z-20 drop-shadow-lg" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>More Amenities</h3>
               <ScrollingRow images={scrollingImages} />
             </div>
             {/* Bottom right circular logo (on top of grid, counterclockwise) */}

@@ -175,7 +175,7 @@ const Hero = () => {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="absolute bottom-10 right-10 z-20 max-w-sm text-right"
                 >
-                  <span className="text-white text-xl opacity-80 font-light montserrat-regular">
+                  <span className="text-white text-xl opacity-80 font-light roboto-400">
                     Spend unforgettable and remarkable time in the Mysore Union club — luxury, nature, and you.
                   </span>
                 </motion.div>

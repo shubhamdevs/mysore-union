@@ -58,7 +58,7 @@ const ReserveSection: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 mb-6 tracking-tight" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>
             RESERVE YOUR EXPERIENCE
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto roboto-100">
             Experience luxury dining and premium amenities. Reserve your perfect moment with us.
           </p>
         </div>
@@ -88,7 +88,7 @@ const ReserveSection: React.FC = () => {
                           : "text-gray-400 border-gray-600/30 hover:text-gray-200 hover:border-gray-500/50 hover:bg-white/10"
                       )}
                     >
-                      <span className="relative z-10">Dining</span>
+                      <span className="relative z-10 roboto-300">Dining</span>
                       {activeTab === 'dining' && (
                         <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 animate-pulse" />
                       )}
@@ -104,7 +104,7 @@ const ReserveSection: React.FC = () => {
                           : "text-gray-400 border-gray-600/30 hover:text-gray-200 hover:border-gray-500/50 hover:bg-white/10"
                       )}
                     >
-                      <span className="relative z-10">Amenities</span>
+                      <span className="relative z-10 roboto-300">Amenities</span>
                       {activeTab === 'amenities' && (
                         <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 animate-pulse" />
                       )}
@@ -244,7 +244,7 @@ const ReserveSection: React.FC = () => {
                         "group relative overflow-hidden"
                       )}
                     >
-                      <span className="relative z-10">
+                      <span className="relative z-10 roboto-400">
                         {activeTab === 'dining' ? 'Reserve Dining' : 'Reserve Amenity'}
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
