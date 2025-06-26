@@ -519,6 +519,19 @@ video * {
 
 /* Mobile video specific styles */
 @media (max-width: 768px) {
+
+  .luxury-button,
+  .premium-button,
+  .btn {
+    padding: 0.4rem 1rem !important;
+    font-size: 0.85rem !important;
+    border-width: 1.5px !important;
+    min-height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   video {
     object-fit: cover !important;
     height: 100% !important;
@@ -739,7 +752,6 @@ footer .social-icon:hover {
 .menu-section {
   margin: 0 auto;
   width: 100%;
-  max-width: 350px;
 }
 
 @media (max-width: 768px) {
@@ -749,10 +761,7 @@ footer .social-icon:hover {
     padding-bottom: 6rem;
   }
 
-  .menu-section {
-    margin-bottom: 2rem;
-    max-width: 50%;
-  }
+
 
   .social-icons-container {
     width: 100%;

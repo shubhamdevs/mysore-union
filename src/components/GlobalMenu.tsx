@@ -250,12 +250,12 @@ const GlobalMenu: React.FC = () => {
                 ease: [0.25, 0.1, 0.25, 1]  // Custom cubic-bezier for smooth ease-in-out
               }}>
               {/* Left section: menu links and socials */}
-              <div className="flex-1 flex flex-col justify-evenly items-center pt-16 pb-8 md:px-12 lg:px-20 global-menu-container border-2 border-white border-solid "
+              <div className="w-full flex-1 flex flex-col items-center  pt-16 pb-8 md:px-12 lg:px-20 global-menu-container border-2 border-white border-solid "
 
               >
                 {/* Navigation Menu Section */}
                 <div className="w-full  menu-section  border-2 border-white border-solid ">
-                  <ul className="space-y-6 md:space-y-6 w-full h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
+                  <ul className="  w-full h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
                     {sections.map((section) => {
 
                       const hoverColor = '#cbd5e1 '
@@ -285,7 +285,7 @@ const GlobalMenu: React.FC = () => {
                 </div>
 
                 {/* Socials Section */}
-                <div className="mt-8 md:mt-12 social-icons-container ">
+                <div className="mt-4 md:mt-8 social-icons-container ">
                   <div className="flex flex-wrap justify-center gap-4 md:gap-5">
                     {socials.map((s) => (
                       <motion.a

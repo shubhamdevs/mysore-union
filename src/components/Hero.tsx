@@ -95,9 +95,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="absolute top-0 left-0 w-full flex justify-center md:justify-between  items-center px-4 md:pr-16 md:pl-10 sm:px-6 pt-4 sm:pt-6 z-20"
+              className="absolute top-0 left-0 w-full flex justify-center lg:justify-between  items-center px-4 md:pr-16 md:pl-10 sm:px-6 pt-4 sm:pt-6 z-20"
             >
-              <h1 className="text-white text-5xl sm:text-8xl md:text-9xl mt-[4rem] md:mt-0 changa-one-regular leading-none select-none">Mysore Union</h1>
+              <h1 className="text-white text-5xl md:text-8xl sm:text-8xl  mt-[4rem] md:mt-0 changa-one-regular leading-none select-none">Mysore Union</h1>
               {!isMobile && (
                 <motion.a
                   href="#reserve"
