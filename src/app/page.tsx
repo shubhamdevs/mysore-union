@@ -22,14 +22,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative">
-      <div className="fixed inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" />
-      <div className="relative z-10">
-        <section id="welcome" className="section-bg"><Hero /></section>
-        <section id="introduction" className="section-bg"><DescriptiveSection /></section>
-        <section id="amenities" className="section-bg"><Amenities /></section>
-        <section id="reserve" className="section-bg"><ReserveSection /></section>
-        <section id="faq" className="section-bg"><FAQSection /></section>
+    <main className="relative" >
+      {/* <div className="fixed inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-black opacity-90" /> */}
+      <div className="relative z-10" >
+        <section id="welcome" > <Hero /></section >
+        <section id="introduction"  > <DescriptiveSection /></section >
+        <section id="amenities"  > <Amenities /></section >
+        <section id="reserve" > <ReserveSection /></section >
+        <section id="faq" > <FAQSection /></section >
         <Footer />
       </div>
     </main>
