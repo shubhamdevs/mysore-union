@@ -130,7 +130,7 @@ const Hero = () => {
             {/* Bottom Tagline & Description - responsive for all devices */}
             {/* For mobile devices - centered layout */}
             {isMobile ? (
-              <div className="absolute bottom-40 left-0 right-0 z-20 flex flex-col items-center justify-center space-y-4 px-4">
+              <div className="absolute bottom-60 left-0 right-0 z-20 flex flex-col items-center justify-center space-y-4 px-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -138,7 +138,8 @@ const Hero = () => {
                   className="text-center"
                 >
                   <span className="text-white text-3xl font-light leading-tight">
-                    Closer to Nature Closer to Yourself
+                    Closer to Nature <br />
+                    Closer to Yourself
                   </span>
                 </motion.div>
 

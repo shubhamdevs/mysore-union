@@ -247,7 +247,7 @@ const GlobalMenu: React.FC = () => {
               exit={{ x: '-100%' }}
               transition={{
                 duration: 0.8,
-                ease: [0.25, 0.1, 0.25, 1]  // Custom cubic-bezier for smooth ease-in-out
+                ease: [0.25, 0.1, 0.25, 1]
               }}>
               {/* Left section: menu links and socials */}
               <div className="w-full flex-1 flex flex-col items-center  pt-16 pb-8 md:px-12 lg:px-20 global-menu-container border-2 border-white border-solid "
@@ -255,7 +255,7 @@ const GlobalMenu: React.FC = () => {
               >
                 {/* Navigation Menu Section */}
                 <div className="w-full  menu-section  border-2 border-white border-solid ">
-                  <ul className="  w-full h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
+                  <ul className="  w-full h-[40vh] sm:h-[60vh] flex flex-col justify-between border-2 border-white border-solid">
                     {sections.map((section) => {
 
                       const hoverColor = '#cbd5e1 '
