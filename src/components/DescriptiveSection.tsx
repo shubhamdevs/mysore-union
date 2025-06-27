@@ -2,8 +2,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-// TextReveal is currently not used but might be needed for future enhancements
-// import { TextReveal } from "../components/magicui/text-reveal";
+import { TextReveal } from "../components/magicui/text-reveal";
 
 const description = `It All Begins Here -  where luxury meets tradition in a sanctuary of modern amenities. Discover exquisite nature, wellness, and recreation—experience state-of-the-art lifestyle amenities and family fun zones. Mysore Union is your go-to destination for unforgettable moments, premium community, and 360° growth.`;
 
@@ -48,9 +47,9 @@ const DescriptiveSection: React.FC = () => {
       <div className="flex-1 w-[90%] md:w-3/4 relative z-10">
         <div className="relative" style={{ minHeight: 220, fontFamily: 'Antic Slab, serif' }}>
           <div className="relative">
-            <span className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white roboto-100  ">
+            <TextReveal className="block text-[clamp(1.6rem,3.2vw,2.8rem)] leading-tight text-white roboto-100">
               {description}
-            </span>
+            </TextReveal>
           </div>
         </div>
       </div>
@@ -81,4 +80,4 @@ const DescriptiveSection: React.FC = () => {
   );
 };
 
-export default DescriptiveSection; 
+export default DescriptiveSection;

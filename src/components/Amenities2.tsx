@@ -191,7 +191,7 @@ const Amenities: React.FC = () => {
     }, []);
 
     return (
-        <div ref={sectionRef} className="relative py-12 sm:py-12 px-4 flex flex-col  overflow-visible border-2 border-solid border-white" >
+        <div ref={sectionRef} className="relative py-12 sm:py-12 px-4 flex flex-col  overflow-visible" >
 
             {/* Top left circular logo (behind grid, clockwise) */}
             <CircularTextLogo className="-top-16 -left-16 opacity-40" zIndex={0} style={{ filter: 'blur(1px)' }} reverse={false} />
@@ -235,14 +235,15 @@ const Amenities: React.FC = () => {
 
                         <ContainerScroll
                             titleComponent={
-                                < div className=" gap-2 sm:gap-6  mx-auto w-full relative z-10 text-center border-2 border-solid border-blue-500" >
-                                    <span className="text-4xl md:text-6xl font-bold block" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}> CRAFTING </span> <br />
-                                    < span className="text-4xl md:text-[6rem] font-bold text-white block mt-1" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}> EXPERIENCES </span>
+                                <div className="relative gap-2 sm:gap-6 mx-auto w-full z-10 text-center">
+
+                                    <span className="relative z-10 text-4xl md:text-6xl font-bold block" style={{ color: '#C6A962', fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>CRAFTING</span><br />
+                                    <span className="relative z-10 text-4xl md:text-[6rem] font-bold text-white block mt-1" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.04em' }}>EXPERIENCES</span>
                                 </div>
                             }
                         >
                             <motion.div
-                                className="relative max-w-9xl mx-auto min-h-[700px] grid grid-cols-6 grid-rows-5 gap-8  border-2 border-solid border-green-500"
+                                className="relative max-w-9xl mx-auto min-h-[700px] grid grid-cols-6 grid-rows-5 gap-8  "
                                 variants={gridVariants}
                                 initial="hidden"
                                 whileInView="show"

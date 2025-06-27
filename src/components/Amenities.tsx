@@ -249,6 +249,10 @@ const Amenities: React.FC = () => {
                     variants={itemVariants}
                   >
                     {/* <div className="silver-glow" /> */}
+                    {/* Copilot-style glowing effect behind the whole container */}
+                    <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none select-none">
+                      <div className="w-full h-full rounded-3xl bg-[#a78bfa] opacity-60 blur-[80px] shadow-[0_0_80px_40px_#a78bfa,0_0_160px_80px_#818cf8,0_0_320px_160px_#818cf8]" />
+                    </div>
                     <div className="z-50 relative w-full h-full min-h-[100px]" >
                       <Image
                         src={amenity.image}
